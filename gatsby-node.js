@@ -5,7 +5,6 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/teaBlogPost.js')
     resolve(
       graphql(
         `
@@ -26,10 +25,28 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulTeaReviewPost.edges
+        const postsPerPage = 2
+        const numPages = Math.ceil(posts.length / postsPerPage)
+
+        // pagination for list of tea reviews
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/tea-reviews` : `/tea-reviews/${i + 1}`,
+            component: path.resolve("./src/templates/teaReviewList.js"),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1,
+            },
+          })
+        })
+
+        // page for each tea review
         posts.forEach((post, index) => {
           createPage({
             path: `/tea-reviews/${post.node.slug}/`,
-            component: blogPost,
+            component: path.resolve('./src/templates/teaBlogPost.js'),
             context: {
               slug: post.node.slug
             },

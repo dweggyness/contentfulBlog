@@ -10,7 +10,12 @@ require("dotenv").config({
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: 'Gatsby Contentful starter',
+  },
   plugins: [
+    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-contentful`,
       options: {

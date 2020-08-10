@@ -1,4 +1,5 @@
 import React from "react"
+import Layout from '../components/Layout';
 import { Link } from "gatsby" // highlight-line
 
 export default function Home({ data }) {
@@ -6,7 +7,7 @@ export default function Home({ data }) {
   console.log(data);
 
   return (
-    <div>
+    <Layout>
       <span>Tea review page or something</span>
       <ol>
         {posts.map(post => 
@@ -15,7 +16,7 @@ export default function Home({ data }) {
             </li>
         )}
       </ol>
-    </div>
+    </Layout>
   )
 }
 

@@ -6,7 +6,7 @@ import { Layout, TeaReviewBlogPost } from '../components';
 const PostGridContainer = styled.section`
   display: grid;
   grid-template: repeat(auto-fill, minmax(300px, 1fr)) / repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 1em;
+  grid-gap: 3em;
   width: 100%;
 `
 

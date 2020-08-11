@@ -24,19 +24,17 @@ export default function StarRating({ rating }) {
     const numberOfFullStars = Math.floor(rating);
     const numberOfHalfStars = (rating - numberOfFullStars > 0) ? 1 : 0;
     const numberOfEmptyStars = 5 - numberOfFullStars - numberOfHalfStars;
-
-    console.log('stars: ', numberOfFullStars, numberOfHalfStars, numberOfEmptyStars);
     
     return ( 
         <StarContainer>
             {Array.from({ length: numberOfFullStars }).map((_, index) => 
-                <FaStar key={index} />
+                <FaStar color={'#2d5225'} key={index} />
             )}
             {Array.from({ length: numberOfHalfStars }).map((_, index) => 
-                <FaStarHalfAlt key={index} />
+                <FaStarHalfAlt color={'#2d5225'} key={index} />
             )}
             {Array.from({ length: numberOfEmptyStars }).map((_, index) => 
-                <FaRegStar key={index} />
+                <FaRegStar color={'#2d5225'} key={index} />
             )}
         </StarContainer>
     )

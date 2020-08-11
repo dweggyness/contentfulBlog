@@ -12,27 +12,54 @@ const Container = styled.div`
     align-items: center;
 `
 
-const NavItemContainer = styled(Container)`
-    flex-direction: row;
-    padding-right: 30;
-`
-
 const Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin: 0px 10%;
+    margin: 50px 10% 0;
     font-family: 'Cooper Hewitt';
 `
 
 const Header = styled.header`
-    width: 100%;
+    width: 80%;
+    padding: 0 10%;
     height: ${headerHeight};
     background-color: #99b898;
     display: flex;
     justify-content: space-between;
+`
+
+const NavItemContainer = styled.nav`
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    padding-right: 30;
+`
+
+const NavLink = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    marginTop: 10%;
+    height: 90%;
+
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.15s;
+
+    &:visited {
+        color: #333;
+    }
+        
+    &:hover, &:focus {
+        color: #2d5225;
+        background-color: white;
+    }
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -52,15 +79,9 @@ export default function Layout({ children }) {
                     <img style={{ height: 75 }} src={logo}></img>
                 </Link>
                 <NavItemContainer>
-                    <nav>
-                        <Link to="/tea-reviews">Tea Reviews</Link>
-                    </nav>
-                    <nav>
-                        <Link to="/blog">Blog</Link>
-                    </nav>
-                    <nav>
-                        <Link to="/about">About</Link>
-                    </nav>
+                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/tea-reviews">Tea Reviews</NavLink>
+                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/blog">Blog</NavLink>
+                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/about">About</NavLink>
                 </NavItemContainer>
             </Header>
             <Main>{children}</Main>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { StarRating } from '.';
@@ -15,7 +15,7 @@ const PostImageContainer = styled(Link)`
   grid-area: 1 / 1 / 3 / 4;
 `
 
-const PostTitle = styled.h3`
+const PostTitleContainer = styled.h4`
   grid-area: 2 / 2 / 3 / 3;
   display: grid;
   z-Index: 2;
@@ -24,12 +24,13 @@ const PostTitle = styled.h3`
   margin: 0;
   font-weight: 400;
   font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: ${props => props.isHovered ? `rgba(196, 230, 195, 0.85)` : `rgba(255, 255, 255, 0.85)`};
+  transition: 0.15s;
   padding: 20px 25px 15px;
   pointer-events: none;
 `
 
-const PostLabel = styled.h4`
+const PostLabel = styled.h3`
   font-family: 'Raleway';
   font-size: 12px;
   font-weight: 500;
@@ -73,19 +74,28 @@ const DetailContent = styled(DetailTitle)`
 `
 
 export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, teaPrice, teaRating }) {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
     <PostContainer>
-      <PostImageContainer to={`/tea-reviews/${slug}`}>
+      <PostImageContainer 
+        onFocus={() => setIsHovered(true)}
+        onBlur={() => setIsHovered(false)}
+        to={`/tea-reviews/${slug}`}
+      >
         <Img
           fluid={thumbnail.fluid} 
           key={thumbnail.fluid.src}
+          imgStyle={{ objectFit: 'contain' }}
           alt={thumbnail.title}
         />
       </PostImageContainer>
-      <PostTitle>
+      <PostTitleContainer
+        isHovered={isHovered}
+      >
         <PostLabel>REVIEW</PostLabel> 
         {title}
-      </PostTitle>
+      </PostTitleContainer>
       <PostDetailsContainer>
         <PostDetail style={{ borderLeft: 'none' }}>
           <DetailTitle>Type</DetailTitle>

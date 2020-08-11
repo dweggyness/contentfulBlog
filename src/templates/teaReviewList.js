@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
-import Layout from '../components/Layout';
+import { Layout, StarRating } from '../components';
 import { Link } from "gatsby" // highlight-line
 
 const PostGridContainer = styled.section`
@@ -32,6 +32,7 @@ export default function Home({ data }) {
                     alt={post.node.thumbnail.title}
                 />
                 <Link to={`/tea-reviews/${post.node.slug}`}>{`${post.node.teaSource} ${post.node.teaName}`}</Link>
+                <StarRating rating={post.node.rating} />
             </PostContainer>
         )}
       </PostGridContainer>

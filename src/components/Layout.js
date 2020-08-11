@@ -22,6 +22,8 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 80%;
+    margin: 0px 10%;
     font-family: 'Cooper Hewitt';
 `
 

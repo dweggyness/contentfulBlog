@@ -1,21 +1,40 @@
 import React from "react"
+import styled from "styled-components"
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
 import Layout from '../components/Layout';
 import { Link } from "gatsby" // highlight-line
 
+const PostGridContainer = styled.section`
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-gap: 1em;
+  width: 80%;
+`
+
+const PostContainer = styled.article`
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+`
+
 export default function Home({ data }) {
   const posts = data.allContentfulTeaReviewPost.edges
-  console.log(data);
+  console.log(posts);
 
   return (
     <Layout>
       <span>Tea review page or something</span>
-      <ol>
+      <PostGridContainer>
         {posts.map(post => 
-            <li>
+            <PostContainer>
+                <Img 
+                    fluid={post.node.thumbnail.fluid} 
+                    key={post.node.thumbnail.fluid.src}
+                    alt={post.node.thumbnail.title}
+                />
                 <Link to={`/tea-reviews/${post.node.slug}`}>{`${post.node.teaSource} ${post.node.teaName}`}</Link>
-            </li>
+            </PostContainer>
         )}
-      </ol>
+      </PostGridContainer>
     </Layout>
   )
 }
@@ -36,6 +55,11 @@ export const query = graphql`
                 teaType
                 pricePerGram
                 slug
+                thumbnail {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyContentfulFluid
+                  }
+                }
             }
         }
     }

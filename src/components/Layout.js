@@ -53,14 +53,15 @@ const sharedTheme = {
 const lightTheme = {
     ...sharedTheme,
     curTheme: 'light',
-    backgroundColor: 'white',
+    backgroundColor: '#EEEEEE',
     textColor: '#222',
 }
 
 const darkTheme = {
     ...sharedTheme,
     curTheme: 'dark',
-    backgroundColor: '#1e1938',
+    primaryColor: '#7aa178',
+    backgroundColor: '#2b244f',
     textColor: '#EEE'
 }
 

@@ -35,8 +35,8 @@ const PostTitleContainer = styled.h4`
 const PostLabel = styled.h3`
   font-family: 'Raleway';
   font-size: 12px;
-  font-weight: 500;
-  color: white;
+  font-weight: ${props => props.theme.curTheme === 'light' ? 500 : 600};
+  color: ${props => props.theme.curTheme === 'light' ? '#EEEEEE' : props.theme.secondaryColor};
 
   display: block;
   position: absolute;
@@ -44,7 +44,7 @@ const PostLabel = styled.h3`
   left: 25px;
   margin: 0;
   padding: 4px 10px;
-  background-color: ${props => props.theme.secondaryColor};
+  background-color: ${props => props.theme.curTheme === 'light' ? props.theme.secondaryColor : '#EEEEEE'};
   opacity: 1;
 `
 

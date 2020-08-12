@@ -77,7 +77,10 @@ export default function Navbar ({ setNewTheme }) {
             {navbarOpen ? <Hamburger open /> : <Hamburger />}
         </Toggle>
         <Navbox open={navbarOpen}>
-            <NavbarLinks setNewTheme={setNewTheme} />
+            <NavbarLinks 
+              onNavigate={() => setNavbarOpen(false)} 
+              setNewTheme={setNewTheme} 
+            />
         </Navbox>
     </>
   )

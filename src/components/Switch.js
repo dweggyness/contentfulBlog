@@ -44,7 +44,7 @@ const SwitchInput = styled.input`
             transform: translateX(25px);
         }
         transition: background-color 0.15s ease-in;
-        background-color: #3773bd;
+        background-color: #3742bd;
     }
 
     &:focused ~ ${Slider} {

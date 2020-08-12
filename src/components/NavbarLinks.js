@@ -17,10 +17,6 @@ const NavLink = styled(Link)`
     transition: 0.15s;
     color: #222;
 
-    & .active {
-        background-color: ${props => props.theme.backgroundColor};
-    }
-
     &:visited {
         color: #222;
     }
@@ -43,17 +39,27 @@ const ThemeToggleContainer = styled.div`
     align-items: center;
     padding: 0 25px 5px;
     height: 90%;
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+        margin: 25px 0 0;
+    }
 `
 
 const ThemeSwitchText = styled.span`
     color: #222;
-    margin-top: 10px;
+    margin-top: 8px;
     font-family: 'Raleway';
     font-weight: 600;
     font-size: 12px;
+
+    @media (max-width: 768px) {
+        margin: 0 0 0 8px;
+        border-radius: 2px;
+    }
 `
 
-export default function NavbarLinks ({ setNewTheme }) {
+export default function NavbarLinks ({ onNavigate, setNewTheme }) {
     const theme = useContext(ThemeContext);
 
     const currentThemeText = theme.curTheme === 'light' ? 'LIGHT' : 'DARK';
@@ -62,22 +68,25 @@ export default function NavbarLinks ({ setNewTheme }) {
         <>
             <NavLink 
                 partiallyActive={true} 
-                activeClassName="active" 
+                activeStyle={{ backgroundColor: theme.backgroundColor, color: theme.textColor }} 
                 to="/tea-reviews"
+                onClick={onNavigate}
             >
                 TEA REVIEWS
             </NavLink>
             <NavLink
                 partiallyActive={true}
-                activeClassName="active"
+                activeStyle={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}
                 to="/blog"
+                onClick={onNavigate}
             >
                 BLOG
             </NavLink>
             <NavLink 
                 partiallyActive={true}
-                activeClassName="active"
+                activeStyle={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}
                 to="/about"
+                onClick={onNavigate}
             >
                 ABOUT
             </NavLink>

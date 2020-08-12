@@ -8,7 +8,7 @@ import colors from "../constants/colors";
 const PostContainer = styled.article`
   display: grid;
   grid-template-columns: 0.5fr 3fr 0.5fr;
-  grid-template-rows: 2.5fr minmax(0.1fr, auto) 125px;
+  grid-template-rows: 2.5fr 0.5fr 40px;
 `
 
 const PostImageContainer = styled(Link)`
@@ -79,14 +79,16 @@ export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, tea
   return (
     <PostContainer>
       <PostImageContainer 
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onFocus={() => setIsHovered(true)}
         onBlur={() => setIsHovered(false)}
         to={`/tea-reviews/${slug}`}
       >
         <Img
           fluid={thumbnail.fluid} 
-          key={thumbnail.fluid.src}
-          imgStyle={{ objectFit: 'contain' }}
+          style={{ height: '100%', maxHeight: '100%' }}
+          imgStyle={{ objectFit: 'cover' }}
           alt={thumbnail.title}
         />
       </PostImageContainer>

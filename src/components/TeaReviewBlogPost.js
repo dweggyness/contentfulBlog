@@ -3,6 +3,7 @@ import styled, { ThemeContext } from "styled-components"
 import Img from "gatsby-image"
 import { StarRating } from '.';
 import { Link } from "gatsby" // highlight-line
+import { hexToRGBA } from '../utils/hexToRGBA';
 
 const PostContainer = styled.article`
   display: grid;
@@ -23,8 +24,9 @@ const PostTitleContainer = styled.h4`
   margin: 0;
   font-weight: 400;
   font-size: 18px;
-  background-color: ${props => props.isHovered ? props.theme.primaryColor : props.theme.backgroundColor};
-  opacity: 0.85;
+  background-color: ${props => props.isHovered 
+    ? hexToRGBA(props.theme.primaryColor, 0.85) 
+    : hexToRGBA(props.theme.backgroundColor, 0.85)};
   transition: 0.15s;
   padding: 20px 25px 15px;
   pointer-events: none;
@@ -43,6 +45,7 @@ const PostLabel = styled.h3`
   margin: 0;
   padding: 4px 10px;
   background-color: ${props => props.theme.secondaryColor};
+  opacity: 1;
 `
 
 const PostDetailsContainer = styled.div`

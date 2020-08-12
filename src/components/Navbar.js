@@ -65,26 +65,20 @@ const Hamburger = styled.div`
     top: 10px;
   }
 `
-export default function Navbar () {
+export default function Navbar ({ setNewTheme }) {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
     <>
-      <Toggle
-        navbarOpen={navbarOpen}
-        onClick={() => setNavbarOpen(!navbarOpen)}
-      >
-        {navbarOpen ? <Hamburger open /> : <Hamburger />}
-      </Toggle>
-      {navbarOpen ? (
-        <Navbox open>
-          <NavbarLinks />
+        <Toggle
+            navbarOpen={navbarOpen}
+            onClick={() => setNavbarOpen(!navbarOpen)}
+        >
+            {navbarOpen ? <Hamburger open /> : <Hamburger />}
+        </Toggle>
+        <Navbox open={navbarOpen}>
+            <NavbarLinks setNewTheme={setNewTheme} />
         </Navbox>
-      ) : (
-        <Navbox>
-          <NavbarLinks />
-        </Navbox>
-      )}
     </>
   )
 };

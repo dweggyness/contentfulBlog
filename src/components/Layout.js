@@ -1,8 +1,9 @@
-import React from "react"
-import styled, { createGlobalStyle } from "styled-components"
+import React, { useState } from "react"
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Link } from "gatsby" // highlight-line
 import logo from '../../static/Logo.png'
-import Navbar from './Navbar';
+import Navbar from './Navbar'
+import colors from '../constants/colors'
 
 const headerHeight = '75px';
 
@@ -26,7 +27,7 @@ const Main = styled.div`
 const Header = styled.header`
     width: 100%;
     height: ${headerHeight};
-    background-color: #99b898;
+    background-color: ${colors.green};
     display: flex;
     justify-content: space-between;
 `
@@ -35,21 +36,45 @@ const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         margin: 0;
-        color: #333;
+        color: ${props => (props.theme.textColor)};
+        background-color: ${props => (props.theme.backgroundColor)};
     }
 `
 
+const sharedTheme = {
+    primaryColor: '#99b898'
+}
+
+const lightTheme = {
+    backgroundColor: 'white',
+    textColor: '#333',
+}
+
+const darkTheme = {
+    backgroundColor: '#1e1938',
+    textColor: '#AAA'
+}
+
 export default function Layout({ children }) {
-    return ( 
+    const [curTheme, setCurTheme] = useState('light');
+
+    const setNewTheme = (theme) => {
+        if (theme !== 'light' && theme !== 'dark') setCurTheme('light');
+        else setCurTheme(theme);
+    }
+
+    return (
         <Container>
-            <GlobalStyle />
-            <Header>
-                <Link style={{ zIndex: 999, marginLeft: '10%' }} to="/">
-                    <img style={{ height: 75 }} src={logo}></img>
-                </Link>
-                <Navbar />
-            </Header>
-            <Main>{children}</Main>
+            <ThemeProvider theme={curTheme === 'light' ? lightTheme : darkTheme}>
+                <GlobalStyle />
+                <Header>
+                    <Link style={{ zIndex: 999, marginLeft: '10%' }} to="/">
+                        <img style={{ height: 75 }} src={logo}></img>
+                    </Link>
+                    <Navbar setNewTheme={setNewTheme}/>
+                </Header>
+                <Main>{children}</Main>
+            </ThemeProvider>
         </Container>
     )
 }

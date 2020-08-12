@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Switch from '../components/Switch';
 
 const NavLink = styled(Link)`
     display: flex;
@@ -10,7 +11,7 @@ const NavLink = styled(Link)`
     height: 90%;
 
     font-family: 'Raleway';
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
     text-decoration: none;
     transition: 0.15s;
@@ -30,7 +31,15 @@ const NavLink = styled(Link)`
     }
 `
 
-export default function NavbarLinks () {
+const ThemeToggleContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    height: 90%;
+`
+
+export default function NavbarLinks ({ setNewTheme }) {
     return (
         <>
             <NavLink 
@@ -54,6 +63,9 @@ export default function NavbarLinks () {
             >
                 ABOUT
             </NavLink>
+            <ThemeToggleContainer>
+                <Switch onChange={(e) => e ? setNewTheme('light') : setNewTheme('dark')}/>
+            </ThemeToggleContainer>
         </>
     )
 }

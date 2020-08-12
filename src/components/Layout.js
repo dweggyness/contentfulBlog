@@ -2,6 +2,7 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby" // highlight-line
 import logo from '../../static/Logo.png'
+import Navbar from './Navbar';
 
 const headerHeight = '75px';
 
@@ -23,43 +24,11 @@ const Main = styled.div`
 `
 
 const Header = styled.header`
-    width: 80%;
-    padding: 0 10%;
+    width: 100%;
     height: ${headerHeight};
     background-color: #99b898;
     display: flex;
     justify-content: space-between;
-`
-
-const NavItemContainer = styled.nav`
-    display: flex;
-    align-items: flex-end;
-    flex-direction: row;
-    padding-right: 30;
-`
-
-const NavLink = styled(Link)`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 25px;
-    marginTop: 10%;
-    height: 90%;
-
-    font-family: 'Raleway';
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    transition: 0.15s;
-
-    &:visited {
-        color: #333;
-    }
-        
-    &:hover, &:focus {
-        color: #2d5225;
-        background-color: white;
-    }
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -75,14 +44,10 @@ export default function Layout({ children }) {
         <Container>
             <GlobalStyle />
             <Header>
-                <Link to="/">
+                <Link style={{ zIndex: 999, marginLeft: '10%' }} to="/">
                     <img style={{ height: 75 }} src={logo}></img>
                 </Link>
-                <NavItemContainer>
-                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/tea-reviews">Tea Reviews</NavLink>
-                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/blog">Blog</NavLink>
-                    <NavLink activeStyle={{ backgroundColor: 'white' }} to="/about">About</NavLink>
-                </NavItemContainer>
+                <Navbar />
             </Header>
             <Main>{children}</Main>
         </Container>

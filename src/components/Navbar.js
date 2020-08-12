@@ -29,7 +29,7 @@ const Navbox = styled.nav`
         width: 100%;
         align-items: center;
         justify-content: flex-start;
-        background-color: #99b898;
+        background-color: ${props => props.theme.primaryColor};
         transition: all 0.1s ease-in;
         opacity: ${props => (props.open ? "100%" : "0%")};
         top: ${props => (props.open ? "75px" : "-75px")};
@@ -37,7 +37,7 @@ const Navbox = styled.nav`
 `
 
 const Hamburger = styled.div`
-  background-color: #111;
+  background-color: #333;
   width: 30px;
   height: 3px;
   transition: all 0.1s linear;
@@ -49,7 +49,7 @@ const Hamburger = styled.div`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: #111;
+    background-color: #333;
     content: "";
     position: absolute;
   }

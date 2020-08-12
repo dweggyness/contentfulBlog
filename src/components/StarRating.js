@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
 
@@ -10,7 +10,7 @@ const StarContainer = styled.div`
     display: flex;
 `
 
-export default function StarRating({ rating }) {
+export default function StarRating({ color = '#222', rating }) {
     if (rating < 0 || rating > 5 || rating % 0.5 !== 0) {
         return (
             <StarContainer>
@@ -28,13 +28,13 @@ export default function StarRating({ rating }) {
     return ( 
         <StarContainer>
             {Array.from({ length: numberOfFullStars }).map((_, index) => 
-                <FaStar color={'#2d5225'} key={index} />
+                <FaStar color={color} key={index} />
             )}
             {Array.from({ length: numberOfHalfStars }).map((_, index) => 
-                <FaStarHalfAlt color={'#2d5225'} key={index} />
+                <FaStarHalfAlt color={color} key={index} />
             )}
             {Array.from({ length: numberOfEmptyStars }).map((_, index) => 
-                <FaRegStar color={'#2d5225'} key={index} />
+                <FaRegStar color={color} key={index} />
             )}
         </StarContainer>
     )

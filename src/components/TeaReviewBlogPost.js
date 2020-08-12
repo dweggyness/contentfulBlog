@@ -1,9 +1,8 @@
-import React, { useState } from "react"
-import styled from "styled-components"
+import React, { useContext, useState } from "react"
+import styled, { ThemeContext } from "styled-components"
 import Img from "gatsby-image"
 import { StarRating } from '.';
 import { Link } from "gatsby" // highlight-line
-import colors from "../constants/colors";
 
 const PostContainer = styled.article`
   display: grid;
@@ -24,7 +23,8 @@ const PostTitleContainer = styled.h4`
   margin: 0;
   font-weight: 400;
   font-size: 18px;
-  background-color: ${props => props.isHovered ? `rgba(196, 230, 195, 0.85)` : `rgba(255, 255, 255, 0.85)`};
+  background-color: ${props => props.isHovered ? props.theme.primaryColor : props.theme.backgroundColor};
+  opacity: 0.85;
   transition: 0.15s;
   padding: 20px 25px 15px;
   pointer-events: none;
@@ -42,7 +42,7 @@ const PostLabel = styled.h3`
   left: 25px;
   margin: 0;
   padding: 4px 10px;
-  background-color: ${colors.darkgreen};
+  background-color: ${props => props.theme.secondaryColor};
 `
 
 const PostDetailsContainer = styled.div`
@@ -50,14 +50,14 @@ const PostDetailsContainer = styled.div`
   display: grid;
   grid-template: 1fr / repeat(3, auto);
   
-  border-top: 1px solid ${colors.darkgreen};
+  border-top: ${props => (`1px solid ${props.theme.textColor}`)}};
   margin: 0 5px;
 `
 
 const PostDetail = styled.div`
   display: grid;
   align-items: center;
-  border-left: 1px solid ${colors.darkgreen};
+  border-left: ${props => (`1px solid ${props.theme.textColor}`)}};
   border-collapse: collapse;
   padding: 3px 6px;
 `
@@ -75,6 +75,7 @@ const DetailContent = styled(DetailTitle)`
 
 export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, teaPrice, teaRating }) {
   const [isHovered, setIsHovered] = useState(false);
+  const theme = useContext(ThemeContext);
   
   return (
     <PostContainer>
@@ -114,7 +115,7 @@ export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, tea
         <PostDetail>
           <DetailTitle>Rating</DetailTitle>
           <DetailContent>
-            <StarRating rating={teaRating} />
+            <StarRating color={theme.textColor} rating={teaRating} />
           </DetailContent>
         </PostDetail>
       </PostDetailsContainer>

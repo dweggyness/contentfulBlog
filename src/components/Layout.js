@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
-import { Link } from "gatsby" // highlight-line
+import { Link } from "gatsby"
 import logo from '../../static/Logo.png'
 import Navbar from './Navbar'
-import colors from '../constants/colors'
 
 const headerHeight = '75px';
 
@@ -27,7 +26,7 @@ const Main = styled.div`
 const Header = styled.header`
     width: 100%;
     height: ${headerHeight};
-    background-color: ${colors.green};
+    background-color: ${props => props.theme.primaryColor};
     display: flex;
     justify-content: space-between;
 `
@@ -36,23 +35,33 @@ const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         margin: 0;
-        color: ${props => (props.theme.textColor)};
-        background-color: ${props => (props.theme.backgroundColor)};
+        color: ${props => props.theme.textColor};
+        background-color: ${props => props.theme.backgroundColor};
     }
 `
-
+/*
+    orange: '#feceab',
+    red: '#ff493d',
+    white: '#fafffa',
+    black: '#333',
+*/
 const sharedTheme = {
-    primaryColor: '#99b898'
+    primaryColor: '#99b898',
+    secondaryColor: '#2d5225',
 }
 
 const lightTheme = {
+    ...sharedTheme,
+    curTheme: 'light',
     backgroundColor: 'white',
-    textColor: '#333',
+    textColor: '#222',
 }
 
 const darkTheme = {
+    ...sharedTheme,
+    curTheme: 'dark',
     backgroundColor: '#1e1938',
-    textColor: '#AAA'
+    textColor: '#EEE'
 }
 
 export default function Layout({ children }) {

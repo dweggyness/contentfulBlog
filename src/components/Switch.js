@@ -7,6 +7,7 @@ const SwitchContainer = styled.label`
     display: inline-block;
     width: 36px;
     height: 15px;
+    filter: drop-shadow(0 2px 2px #666);
 `
 
 const Slider = styled.span`
@@ -17,7 +18,7 @@ const Slider = styled.span`
     right: 0;
     bottom: 0;
     transition: background-color 0.15s ease-in;
-    background-color: #ccc;
+    background-color: #e6de6e;
     border-radius: 30px;
 
     ::before {
@@ -43,7 +44,7 @@ const SwitchInput = styled.input`
             transform: translateX(25px);
         }
         transition: background-color 0.15s ease-in;
-        background-color: #2196F3;
+        background-color: #3773bd;
     }
 
     &:focused ~ ${Slider} {

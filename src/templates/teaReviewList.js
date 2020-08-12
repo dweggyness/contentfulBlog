@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { Layout, TeaReviewBlogPost } from '../components';
+import { TeaReviewBlogPost } from '../components';
 
 const PostGridContainer = styled.section`
   display: grid;
@@ -14,20 +14,18 @@ export default function TeaReviewList({ data }) {
   const posts = data.allContentfulTeaReviewPost.edges
 
   return (
-    <Layout>
-      <PostGridContainer>
-        {posts.map(post => 
-          <TeaReviewBlogPost 
-            thumbnail={post.node.thumbnail}
-            title={`${post.node.teaSource} ${post.node.teaName}`} 
-            slug={post.node.slug}
-            teaType={post.node.teaType}
-            teaPrice={post.node.pricePerGram}
-            teaRating={post.node.rating}
-          />
-        )}
-      </PostGridContainer>
-    </Layout>
+    <PostGridContainer>
+      {posts.map(post => 
+        <TeaReviewBlogPost 
+          thumbnail={post.node.thumbnail}
+          title={`${post.node.teaSource} ${post.node.teaName}`} 
+          slug={post.node.slug}
+          teaType={post.node.teaType}
+          teaPrice={post.node.pricePerGram}
+          teaRating={post.node.rating}
+        />
+      )}
+    </PostGridContainer>
   )
 }
 

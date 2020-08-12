@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React, { useContext } from "react"
+import styled, { ThemeContext } from "styled-components"
 import { Link } from "gatsby"
 import Switch from '../components/Switch';
 
@@ -15,14 +15,19 @@ const NavLink = styled(Link)`
     font-size: 20px;
     text-decoration: none;
     transition: 0.15s;
+    color: #222;
+
+    & .active {
+        background-color: ${props => props.theme.backgroundColor};
+    }
 
     &:visited {
-        color: #333;
+        color: #222;
     }
         
     &:hover, &:focus {
-        color: #2d5225;
-        background-color: white;
+        color: ${props => props.theme.textColor};
+        background-color: ${props => props.theme.backgroundColor};
     }
 
     @media (max-width: 768px) {
@@ -33,38 +38,52 @@ const NavLink = styled(Link)`
 
 const ThemeToggleContainer = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 25px 5px;
     height: 90%;
 `
 
+const ThemeSwitchText = styled.span`
+    color: #222;
+    margin-top: 10px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 12px;
+`
+
 export default function NavbarLinks ({ setNewTheme }) {
+    const theme = useContext(ThemeContext);
+
+    const currentThemeText = theme.curTheme === 'light' ? 'LIGHT' : 'DARK';
+
     return (
         <>
             <NavLink 
                 partiallyActive={true} 
-                activeStyle={{ backgroundColor: 'white' }} 
+                activeClassName="active" 
                 to="/tea-reviews"
             >
                 TEA REVIEWS
             </NavLink>
             <NavLink
                 partiallyActive={true}
-                activeStyle={{ backgroundColor: 'white' }}
+                activeClassName="active"
                 to="/blog"
             >
                 BLOG
             </NavLink>
             <NavLink 
                 partiallyActive={true}
-                activeStyle={{ backgroundColor: 'white' }}
+                activeClassName="active"
                 to="/about"
             >
                 ABOUT
             </NavLink>
             <ThemeToggleContainer>
-                <Switch onChange={(e) => e ? setNewTheme('light') : setNewTheme('dark')}/>
+                <Switch onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>
+                <ThemeSwitchText>{currentThemeText}</ThemeSwitchText>
             </ThemeToggleContainer>
         </>
     )

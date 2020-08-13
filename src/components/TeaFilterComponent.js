@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
+import { navigate } from 'gatsby'
 import { Checkbox } from '../components'
 import { FiFilter } from 'react-icons/fi'
 
@@ -9,47 +10,33 @@ const FilterContainer = styled.div`
   padding: 10px;
 `
 
-export default function TeaFilterComponent({ onFilterChange = () => {} }) {
-    const [filterArr, setFilterArr] = useState([]);
-
-    const handleFilterChange = (changedItem) => {
-        let newArr = []
-
-        if (filterArr.indexOf(changedItem) !== -1) {
-            newArr = filterArr.filter(e => e !== changedItem)
-        }
-        else newArr = [...filterArr, changedItem];
-
-        setFilterArr(newArr);
-        onFilterChange(newArr);
-    }
-
+export default function TeaFilterComponent({ value }) {
     return (
         <FilterContainer>
             <span><FiFilter size={20} />Filter</span>
             <Checkbox 
-                onChange={() => handleFilterChange('Black Tea')} 
-                value={filterArr.indexOf('Black Tea') !== -1}
+                onChange={() => navigate('/tea-reviews/black-tea')} 
+                value={value === 'Black Tea'}
                 label={'Black'}
             />
             <Checkbox
-                onChange={() => handleFilterChange('Green Tea')}
-                value={filterArr.indexOf('Green Tea') !== -1}
+                onChange={() => navigate('/tea-reviews/green-tea')}
+                value={value === 'Green Tea'}
                 label={'Green'}
             />
             <Checkbox
-                onChange={() => handleFilterChange('Oolong Tea')}
-                value={filterArr.indexOf('Oolong Tea') !== -1}
+                onChange={() => navigate('/tea-reviews/oolong-tea')}
+                value={value === 'Oolong Tea'}
                 label={'Oolong'}
             />
             <Checkbox
-                onChange={() => handleFilterChange('Pu-erh')}
-                value={filterArr.indexOf('Pu-erh') !== -1}
+                onChange={() => navigate('/tea-reviews/pu-erh')}
+                value={value === 'Pu-erh'}
                 label={'Pu-erh'}
             />
             <Checkbox
-                onChange={() => handleFilterChange('White Tea')}
-                value={filterArr.indexOf('White Tea') !== -1}
+                onChange={() => navigate('/tea-reviews/white-tea')}
+                value={value === 'White Tea'}
                 label={'White'}
             />
         </FilterContainer>

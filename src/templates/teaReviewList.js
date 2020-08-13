@@ -48,11 +48,13 @@ const PostGridContainer = styled.main`
 `
 
 export default function TeaReviewList({ pageContext, data }) {
+  const currentFilterPage = pageContext.filter.length === 1 ? pageContext.filter[0] : null;
   let posts = data.default.edges;
 
   return (
     <>
       <SortFilterContainer>
+        <TeaFilterComponent value={currentFilterPage} />
       </SortFilterContainer>
       <BackgroundDivider />
       <PostGridContainer>

@@ -10,6 +10,7 @@ const Toggle = styled.nav`
   padding: 0 15px;
   margin-right: 10px;
   z-Index: 3;
+  border-radius: 2px;
   background-color: ${props => props.theme.backgroundColor};
   border-bottom: ${props => (`1px solid ${props.theme.secondaryColor}`)};
 
@@ -22,7 +23,7 @@ const Navbox = styled.nav`
     display: flex;
     align-items: flex-end;
     flex-direction: row;
-    margin-right: 10vw;
+    padding-right: 10vw;
     z-index: 2;
 
     @media (max-width: 768px) {

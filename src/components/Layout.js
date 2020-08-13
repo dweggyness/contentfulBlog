@@ -57,8 +57,8 @@ const lightTheme = {
     ...sharedTheme,
     curTheme: 'light',
     highlightColor: sharedTheme.lightHighlightColor,
-    backgroundColor: '#EEEEEE',
-    modalColor: '#CCCCCC',
+    backgroundColor: '#FCFCFC',
+    modalColor: '#F3F3F3',
     textColor: '#222',
 }
 

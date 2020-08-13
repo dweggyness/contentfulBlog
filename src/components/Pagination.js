@@ -88,7 +88,7 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
     }
 
     const arrayToBeRendered = generateArrayToRender();
-
+    const navSlugFront = currentPage === 1 ? '.' : '..';
 
     return (
         <Pagination style={style}>
@@ -97,14 +97,14 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
                     let navSlug = '';
                     if (currentPage - 1 !== 1) navSlug = currentPage - 1
                     return (
-                        <PageNumber to={`/tea-reviews/${navSlug}`}>
+                        <PageNumber to={`${navSlugFront}/${navSlug}`}>
                             <MdKeyboardArrowLeft style={{ marginTop: 5 }} />
                         </PageNumber>
                     )
                 }
                 else if (element === '>') {
                     return (
-                        <PageNumber to={`/tea-reviews/${currentPage + 1}`}>
+                        <PageNumber to={`${navSlugFront}/${currentPage + 1}`}>
                             <MdKeyboardArrowRight style={{ marginTop: 5 }} />
                         </PageNumber>
                     )
@@ -116,8 +116,8 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
                                 {element}
                             </ActivePageNumber>
                         )
-                    else if (element === 1) return <PageNumber to={`/tea-reviews`}>{element}</PageNumber>
-                    else if (element !== '...') return <PageNumber to={`/tea-reviews/${element}`}>{element}</PageNumber>
+                    else if (element === 1) return <PageNumber to={`${navSlugFront}/`}>{element}</PageNumber>
+                    else if (element !== '...') return <PageNumber to={`${navSlugFront}/${element}`}>{element}</PageNumber>
                     else return <PageNumber>{element}</PageNumber>
                 }
             })}

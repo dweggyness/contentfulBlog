@@ -1,28 +1,28 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { TeaReviewBlogPost, Pagination } from '../components';
+import { TeaReviewBlogPost, TeaFilterComponent,  Pagination } from '../components';
 import bgImageLight from '../../static/seigaihaLight.png'
 import bgImageDark from '../../static/seigaihaDark.png'
 
-const SectionContainer = styled.section`
-  width: 80%;
+const SortFilterContainer = styled.section`
+  width: 60%;
+  height: 50px;
 
-  padding: 0 10%;
+  margin: 0 20%;
   display: flex;
   flex-direction: row;
+
+  background-color: ${props => props.theme.modalColor};
+  border-top: ${props => (`2px solid ${props.theme.secondaryColor}`)};
+  filter: drop-shadow(0 1px 1px #999);
+
   @media (max-width: 768px) {
-    flex-direction: column;
+    width: 80%;
+    margin: 0 10%;
   }
 `
 
-
-const SortFilterContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  border: ${props => (`1px solid ${props.theme.textColor}`)};
-`
 
 const BackgroundDivider = styled.div`
   background-image: ${props => (props.theme.curTheme === 'light' 
@@ -31,10 +31,11 @@ const BackgroundDivider = styled.div`
   )};
   background-repeat: repeat-x;
 
+  z-index: -1;
   opacity: ${props => (props.theme.curTheme === 'light' ? 0.6 : 0.3)};
   height: 200px;
   width: 100%;
-  margin-bottom: -100px;
+  margin: -25px 0 -100px;
 `
 
 const PostGridContainer = styled.main`
@@ -47,15 +48,12 @@ const PostGridContainer = styled.main`
 `
 
 export default function TeaReviewList({ pageContext, data }) {
-  const posts = data.default.edges
+  let posts = data.default.edges;
 
   return (
     <>
-      <SectionContainer>
-        <SortFilterContainer>
-
-        </SortFilterContainer>
-      </SectionContainer>
+      <SortFilterContainer>
+      </SortFilterContainer>
       <BackgroundDivider />
       <PostGridContainer>
         {posts.map(post => 
@@ -75,21 +73,11 @@ export default function TeaReviewList({ pageContext, data }) {
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query($skip: Int!, $limit: Int!, $filter: [String!]) {
     default: allContentfulTeaReviewPost(
         sort: { fields: [updatedAt], order: DESC }
         limit: $limit
-        skip: $skip
-    ) {
-        edges {
-          node {
-            ...PostData
-          }
-        }
-    }
-    allPosts: allContentfulTeaReviewPost(
-        sort: { fields: [updatedAt], order: ASC }
-        limit: $limit
+        filter: { teaType: { in: $filter } }
         skip: $skip
     ) {
         edges {

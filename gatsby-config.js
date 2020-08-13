@@ -29,5 +29,6 @@ module.exports = {
         accessToken: `${process.env.CONTENTFUL_API_KEY}`,
       },
     },
+    `gatsby-plugin-meta-redirect`
   ]
 }

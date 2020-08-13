@@ -18,8 +18,8 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 50px 10% 0;
+    width: 100%;
+    margin: 50px 0 0;
     font-family: 'Cooper Hewitt';
 `
 
@@ -58,6 +58,7 @@ const lightTheme = {
     curTheme: 'light',
     highlightColor: sharedTheme.lightHighlightColor,
     backgroundColor: '#EEEEEE',
+    modalColor: '#CCCCCC',
     textColor: '#222',
 }
 
@@ -65,9 +66,10 @@ const darkTheme = {
     ...sharedTheme,
     curTheme: 'dark',
     highlightColor: sharedTheme.darkHighlightColor,
-    primaryColor: '#7aa178',
+    primaryColor: '#749273',
     backgroundColor: '#181238',
-    textColor: '#EEE'
+    modalColor: '#0e0b1f',
+    textColor: '#EEE',
 }
 
 export default function Layout({ children }) {

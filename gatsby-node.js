@@ -2,7 +2,7 @@ const Promise = require('bluebird')
 const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   return new Promise((resolve, reject) => {
     resolve(
@@ -23,9 +23,12 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
+        
+        // redirect
+        createRedirect({ fromPath: 'tea-reviews/1', toPath: 'tea-reviews', isPermanent: true });
 
         const posts = result.data.allContentfulTeaReviewPost.edges
-        const postsPerPage = 4
+        const postsPerPage = 2
         const numPages = Math.ceil(posts.length / postsPerPage)
 
         // pagination for list of tea reviews

@@ -28,7 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
         createRedirect({ fromPath: 'tea-reviews/1', toPath: 'tea-reviews', isPermanent: true });
 
         const posts = result.data.allContentfulTeaReviewPost.edges
-        const postsPerPage = 2
+        const postsPerPage = 4
         const numPages = Math.ceil(posts.length / postsPerPage)
 
         // pagination for list of tea reviews

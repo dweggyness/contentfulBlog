@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
-const Pagination = styled.div`
+const Pagination = styled.nav`
     display: flex;
     align-items: center;
 `
@@ -11,20 +11,21 @@ const Pagination = styled.div`
 const PageNumber = styled(Link)`
     display: flex;
     align-items: center;
-    font-family: 'Raleway';
-    font-size: 20px;
+    font-family: 'Open Sans';
+    font-size: 18px;
     margin: 0 8px;
     color: ${props => props.theme.textColor};
     text-decoration: none;
 
-    &:hover {
+    &:hover, &:focus {
+        transition: 0.1s all ease-in;
         color: ${props => props.theme.primaryColor};
     }
 `
 
 const ActivePageNumber = styled.span`
-    font-family: 'Raleway';
-    font-size: 20px;
+    font-family: 'Open Sans';
+    font-size: 18px;
     margin: 0 8px;
     font-weight: 600;
 `
@@ -93,8 +94,10 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
         <Pagination style={style}>
             {arrayToBeRendered.map((element) => {
                 if (element === '<') {
+                    let navSlug = '';
+                    if (currentPage - 1 !== 1) navSlug = currentPage - 1
                     return (
-                        <PageNumber to={`/tea-reviews/${currentPage - 1}`}>
+                        <PageNumber to={`/tea-reviews/${navSlug}`}>
                             <MdKeyboardArrowLeft style={{ marginTop: 5 }} />
                         </PageNumber>
                     )
@@ -113,6 +116,7 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
                                 {element}
                             </ActivePageNumber>
                         )
+                    else if (element === 1) return <PageNumber to={`/tea-reviews`}>{element}</PageNumber>
                     else if (element !== '...') return <PageNumber to={`/tea-reviews/${element}`}>{element}</PageNumber>
                     else return <PageNumber>{element}</PageNumber>
                 }

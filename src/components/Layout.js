@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         color: ${props => props.theme.textColor};
         background-color: ${props => props.theme.backgroundColor};
+        transition: all 0.1s ease-in;
     }
 `
 /*
@@ -48,11 +49,14 @@ const GlobalStyle = createGlobalStyle`
 const sharedTheme = {
     primaryColor: '#99b898',
     secondaryColor: '#2d5225',
+    lightHighlightColor: '#FFDB83',
+    darkHighlightColor: '#2F6099',
 }
 
 const lightTheme = {
     ...sharedTheme,
     curTheme: 'light',
+    highlightColor: sharedTheme.lightHighlightColor,
     backgroundColor: '#EEEEEE',
     textColor: '#222',
 }
@@ -60,8 +64,9 @@ const lightTheme = {
 const darkTheme = {
     ...sharedTheme,
     curTheme: 'dark',
+    highlightColor: sharedTheme.darkHighlightColor,
     primaryColor: '#7aa178',
-    backgroundColor: '#2b244f',
+    backgroundColor: '#181238',
     textColor: '#EEE'
 }
 
@@ -88,3 +93,20 @@ export default function Layout({ children }) {
         </Container>
     )
 }
+
+export const query = graphql`
+  fragment PostData on ContentfulTeaReviewPost {
+    updatedAt
+    teaName
+    teaSource
+    rating
+    teaType
+    pricePerGram
+    slug
+    thumbnail {
+        fluid(maxWidth: 500) {
+        ...GatsbyContentfulFluid
+        }
+    }
+  }
+`

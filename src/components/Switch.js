@@ -18,7 +18,7 @@ const Slider = styled.span`
     right: 0;
     bottom: 0;
     transition: background-color 0.15s ease-in;
-    background-color: #e6de6e;
+    background-color: ${props => props.theme.lightHighlightColor};
     border-radius: 30px;
 
     ::before {
@@ -44,7 +44,7 @@ const SwitchInput = styled.input`
             transform: translateX(25px);
         }
         transition: background-color 0.15s ease-in;
-        background-color: #3742bd;
+        background-color: ${props => props.theme.darkHighlightColor};
     }
 
     &:focused ~ ${Slider} {

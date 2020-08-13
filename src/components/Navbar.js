@@ -2,13 +2,16 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { NavbarLinks } from '.'
 
-const Toggle = styled.div`
+const Toggle = styled.nav`
   display: none;
-  height: 90%;
+  height: 75%;
   cursor: pointer;
-  align-self: flex-end;
-  padding: 0 50px;
+  align-self: center;
+  padding: 0 15px;
+  margin-right: 10px;
   z-Index: 3;
+  background-color: ${props => props.theme.backgroundColor};
+  border-bottom: ${props => (`1px solid ${props.theme.secondaryColor}`)};
 
   @media (max-width: 768px) {
     display: flex;
@@ -19,13 +22,13 @@ const Navbox = styled.nav`
     display: flex;
     align-items: flex-end;
     flex-direction: row;
-    padding-right: 10%;
+    margin-right: 10vw;
     z-index: 2;
 
     @media (max-width: 768px) {
         flex-direction: column;
         position: absolute;
-        padding: 25px;
+        padding: 25px 0;
         width: 100%;
         align-items: center;
         justify-content: flex-start;
@@ -37,7 +40,7 @@ const Navbox = styled.nav`
 `
 
 const Hamburger = styled.div`
-  background-color: #333;
+  background-color: ${props => props.theme.textColor};
   width: 30px;
   height: 3px;
   transition: all 0.1s linear;
@@ -48,8 +51,8 @@ const Hamburger = styled.div`
   ::before,
   ::after {
     width: 30px;
-    height: 3px;
-    background-color: #333;
+    height: 3.5px;
+    background-color: ${props => props.theme.textColor};
     content: "";
     position: absolute;
   }

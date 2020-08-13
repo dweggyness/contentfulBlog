@@ -37,7 +37,7 @@ const ThemeToggleContainer = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 25px 5px;
+    padding: 0 0 5px 25px;
     height: 90%;
 
     @media (max-width: 768px) {
@@ -54,7 +54,7 @@ const ThemeSwitchText = styled.span`
     font-size: 12px;
 
     @media (max-width: 768px) {
-        margin: 0 0 0 8px;
+        margin: 0 0 0 12px;
         border-radius: 2px;
     }
 `

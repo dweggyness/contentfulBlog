@@ -53,14 +53,14 @@ const PostDetailsContainer = styled.div`
   display: grid;
   grid-template: 1fr / repeat(3, auto);
   
-  border-top: ${props => (`1px solid ${props.theme.textColor}`)}};
+  border-top: ${props => (`1px solid ${props.theme.textColor}`)};
   margin: 0 5px;
 `
 
 const PostDetail = styled.div`
   display: grid;
   align-items: center;
-  border-left: ${props => (`1px solid ${props.theme.textColor}`)}};
+  border-left: ${props => (`1px solid ${props.theme.textColor}`)};
   border-collapse: collapse;
   padding: 3px 6px;
 `

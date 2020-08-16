@@ -47,28 +47,21 @@ const Checktick = styled.span`
 `
 
 export default function Checkbox({ label = '', value = false, onChange }) {
-    const [isChecked, setIsChecked] = useState(value);
-
-    useEffect(() => {
-        setIsChecked(value);
-    }, [value])
-
     const handleChange = (e) => {
-        const newValue = isChecked ? false : true;
-        setIsChecked(newValue);
-        if (onChange) onChange(newValue);
+        if (onChange) onChange(e);
     }
 
     return (
         <>
             <CheckboxLabel>
                 <CheckboxInput
-                    value={isChecked}
+                    value={value}
                     onChange={handleChange}
+                    checked={value}
                     type="checkbox"
                 />
-                <Checkmark isChecked={isChecked}>
-                    {isChecked && <Checktick />}
+                <Checkmark isChecked={value}>
+                    {value && <Checktick />}
                 </Checkmark>
                 <LabelText>{label}</LabelText>
             </CheckboxLabel>

@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { TeaReviewBlogPost, TeaFilterComponent,  Pagination } from '../components';
+import { TeaReviewBlogPost, TeaSortComponent, TeaFilterComponent,  Pagination } from '../components';
 import bgImageLight from '../../static/seigaihaLight.png'
 import bgImageDark from '../../static/seigaihaDark.png'
 
 const SortFilterContainer = styled.section`
   width: 60%;
-  height: 50px;
 
   margin: 0 20%;
   display: flex;
@@ -35,7 +34,7 @@ const BackgroundDivider = styled.div`
   opacity: ${props => (props.theme.curTheme === 'light' ? 0.6 : 0.3)};
   height: 200px;
   width: 100%;
-  margin: -25px 0 -100px;
+  margin: -50px 0 -100px;
 `
 
 const PostGridContainer = styled.main`
@@ -55,6 +54,7 @@ export default function TeaReviewList({ pageContext, data }) {
     <>
       <SortFilterContainer>
         <TeaFilterComponent value={currentFilterPage} />
+        <TeaSortComponent />
       </SortFilterContainer>
       <BackgroundDivider />
       <PostGridContainer>

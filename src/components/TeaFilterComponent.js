@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { navigate } from 'gatsby'
 import { Checkbox } from '../components'
@@ -11,32 +11,60 @@ const FilterContainer = styled.div`
 `
 
 export default function TeaFilterComponent({ value }) {
+    const [curSelected, setCurSelected] = useState(value);
+
+    const onCheckboxTick = (selected, e) => {
+        if (e === false) { // untick a filter
+            navigate('/tea-reviews');
+        } else {
+            switch(selected) {
+                case 'Black Tea':
+                    navigate('/tea-reviews/black-tea');
+                    break;
+                case 'Green Tea':
+                    navigate('/tea-reviews/green-tea');
+                    break;
+                case 'Oolong Tea':
+                    navigate('/tea-reviews/oolong-tea');
+                    break;
+                case 'Pu-erh':
+                    navigate('/tea-reviews/pu-erh');
+                    break;
+                case 'White Tea':
+                    navigate('/tea-reviews/white-tea');
+                    break;
+                default:
+            }
+        }
+    }
+
+    
     return (
         <FilterContainer>
             <span><FiFilter size={20} />Filter</span>
             <Checkbox 
-                onChange={() => navigate('/tea-reviews/black-tea')} 
-                value={value === 'Black Tea'}
+                onChange={(e) => onCheckboxTick('Black Tea', e)} 
+                value={curSelected === 'Black Tea'}
                 label={'Black'}
             />
             <Checkbox
-                onChange={() => navigate('/tea-reviews/green-tea')}
-                value={value === 'Green Tea'}
+                onChange={(e) => onCheckboxTick('Green Tea', e)}
+                value={curSelected === 'Green Tea'}
                 label={'Green'}
             />
             <Checkbox
-                onChange={() => navigate('/tea-reviews/oolong-tea')}
-                value={value === 'Oolong Tea'}
+                onChange={(e) => onCheckboxTick('Oolong Tea', e)}
+                value={curSelected === 'Oolong Tea'}
                 label={'Oolong'}
             />
             <Checkbox
-                onChange={() => navigate('/tea-reviews/pu-erh')}
-                value={value === 'Pu-erh'}
+                onChange={(e) => onCheckboxTick('Pu-erh', e)}
+                value={curSelected === 'Pu-erh'}
                 label={'Pu-erh'}
             />
             <Checkbox
-                onChange={() => navigate('/tea-reviews/white-tea')}
-                value={value === 'White Tea'}
+                onChange={(e) => onCheckboxTick('White Tea', e)}
+                value={curSelected === 'White Tea'}
                 label={'White'}
             />
         </FilterContainer>

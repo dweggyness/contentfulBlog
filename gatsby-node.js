@@ -17,6 +17,13 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            allContentfulTeaBlogPost {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -80,6 +87,34 @@ exports.createPages = ({ graphql, actions }) => {
             component: path.resolve('./src/templates/teaReviewPost.js'),
             context: {
               slug: post.node.slug
+            },
+          })
+        })
+
+        const blogPosts = result.data.allContentfulTeaBlogPost.edges
+        const numBlogPages = Math.ceil(blogPosts.length / postsPerPage)
+
+        // page for each blog post
+        blogPosts.forEach((post, index) => {
+          createPage({
+            path: `/blog/${post.node.slug}/`,
+            component: path.resolve('./src/templates/teaBlogPost.js'),
+            context: {
+              slug: post.node.slug
+            },
+          })
+        })
+
+        // pagination for blog post
+        Array.from({ length: numBlogPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+            component: path.resolve("./src/templates/teaBlogList.js"),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages: numBlogPages,
+              currentPage: i + 1,
             },
           })
         })

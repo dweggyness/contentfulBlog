@@ -35,7 +35,7 @@ const ActivePageNumber = styled.span`
 // arrayToBeGenerated
 // [<, 1, 2, ..., 7, 8, 9, ..., 12, 13, >]
 
-export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
+export default function Switch({ style, navProps, currentPage = 1, numberOfPages = 1 }) {
     const shouldRenderLeftArrow = currentPage > 1;
     const shouldRenderRightArrow = currentPage < numberOfPages;
 
@@ -93,33 +93,37 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
     return (
         <Pagination style={style}>
             {arrayToBeRendered.map((element, i) => {
+                let content = '';
+                let navLink = '/tea-reviews';
                 if (element === '<') {
+                    content = <MdKeyboardArrowLeft style={{ marginTop: 5 }} />;
                     let navSlug = '';
-                    if (currentPage - 1 !== 1) navSlug = currentPage - 1
-                    return (
-                        <PageNumber key={i} to={`${navSlugFront}/${navSlug}`}>
-                            <MdKeyboardArrowLeft style={{ marginTop: 5 }} />
-                        </PageNumber>
-                    )
+                    if (currentPage - 1 !== 1) navSlug = currentPage - 1;
+                    navLink = `${navSlugFront}/${navSlug}`;
                 }
                 else if (element === '>') {
+                    content = <MdKeyboardArrowLeft style={{ marginTop: 5 }} />;
+                    navLink = `${navSlugFront}/${currentPage + 1}`;
+                } else if (element === currentPage) {
                     return (
-                        <PageNumber key={i} to={`${navSlugFront}/${currentPage + 1}`}>
-                            <MdKeyboardArrowRight style={{ marginTop: 5 }} />
-                        </PageNumber>
+                        <ActivePageNumber key={i}>
+                            {element}
+                        </ActivePageNumber>
                     )
+                } else if (element === 1) {
+                    content = element;
+                    navLink = `${navSlugFront}/`;
+                } else if (element !== '...') {
+                    content = element;
+                    navLink = `${navSlugFront}/${element}`
                 }
-                else {
-                    if (element === currentPage) 
-                        return (
-                            <ActivePageNumber key={i}>
-                                {element}
-                            </ActivePageNumber>
-                        )
-                    else if (element === 1) return <PageNumber key={i} to={`${navSlugFront}/`}>{element}</PageNumber>
-                    else if (element !== '...') return <PageNumber key={i} to={`${navSlugFront}/${element}`}>{element}</PageNumber>
-                    else return <PageNumber key={i}>{element}</PageNumber>
-                }
+                else return <PageNumber key={i}>{element}</PageNumber>
+
+                return (
+                    <PageNumber state={navProps} key={i} to={navLink}>
+                        {content}
+                    </PageNumber>
+                )
             })}
         </Pagination>
     )

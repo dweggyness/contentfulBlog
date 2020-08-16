@@ -10,28 +10,29 @@ const FilterContainer = styled.div`
   padding: 10px;
 `
 
-export default function TeaFilterComponent({ value }) {
+export default function TeaFilterComponent({ navProps, value }) {
     const [curSelected, setCurSelected] = useState(value);
 
     const onCheckboxTick = (selected, e) => {
-        if (e === false) { // untick a filter
-            navigate('/tea-reviews');
+        if (e.target.checked === false) { // untick a filter
+            setCurSelected('');
+            navigate('/tea-reviews', { state: navProps });
         } else {
             switch(selected) {
                 case 'Black Tea':
-                    navigate('/tea-reviews/black-tea');
+                    navigate('/tea-reviews/black-tea', { state: navProps });
                     break;
                 case 'Green Tea':
-                    navigate('/tea-reviews/green-tea');
+                    navigate('/tea-reviews/green-tea', { state: navProps });
                     break;
                 case 'Oolong Tea':
-                    navigate('/tea-reviews/oolong-tea');
+                    navigate('/tea-reviews/oolong-tea', { state: navProps });
                     break;
                 case 'Pu-erh':
-                    navigate('/tea-reviews/pu-erh');
+                    navigate('/tea-reviews/pu-erh', { state: navProps });
                     break;
                 case 'White Tea':
-                    navigate('/tea-reviews/white-tea');
+                    navigate('/tea-reviews/white-tea', { state: navProps });
                     break;
                 default:
             }

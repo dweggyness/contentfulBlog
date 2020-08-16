@@ -47,16 +47,12 @@ const Checktick = styled.span`
 `
 
 export default function Checkbox({ label = '', value = false, onChange }) {
-    const handleChange = (e) => {
-        if (onChange) onChange(e);
-    }
-
     return (
         <>
             <CheckboxLabel>
                 <CheckboxInput
                     value={value}
-                    onChange={handleChange}
+                    onChange={onChange}
                     checked={value}
                     type="checkbox"
                 />

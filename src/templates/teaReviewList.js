@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { TeaReviewBlogPost, TeaSortComponent, TeaFilterComponent,  Pagination } from '../components';
@@ -46,15 +46,45 @@ const PostGridContainer = styled.main`
   margin: 0 10%;
 `
 
-export default function TeaReviewList({ pageContext, data }) {
-  const currentFilterPage = pageContext.filter.length === 1 ? pageContext.filter[0] : null;
-  let posts = data.default.edges;
+export default function TeaReviewList({ location: { state }, pageContext, data }) {
+  const [sortOption, setSortOption] = useState(state ? state.sortOption : 'latest');
+  const [posts, setPosts] = useState(data.descDate.edges);
+  const [navProps, setNavProps] = useState({});
+  const currentFilter = pageContext.filter.length === 1 ? pageContext.filter[0] : null;
+
+  useEffect(() => {
+    if (sortOption) { 
+      switch(sortOption) {
+        case 'latest':
+          setPosts(data.descDate.edges);
+          break;
+        case 'oldest':
+          setPosts(data.ascDate.edges);
+          break;
+        case 'lowestRating':
+          setPosts(data.lowestRating.edges);
+          break;
+        case 'highestRating':
+          setPosts(data.highestRating.edges);
+          break;
+        default:
+          setPosts(data.descDate.edges);
+      }
+      setNavProps({ sortOption })
+    }
+  }, sortOption)
 
   return (
     <>
       <SortFilterContainer>
-        <TeaFilterComponent value={currentFilterPage} />
-        <TeaSortComponent />
+        <TeaFilterComponent 
+          value={currentFilter} 
+          navProps={navProps}
+        />
+        <TeaSortComponent 
+          setSortOption={setSortOption} 
+          value={sortOption}
+        />
       </SortFilterContainer>
       <BackgroundDivider />
       <PostGridContainer>
@@ -71,15 +101,56 @@ export default function TeaReviewList({ pageContext, data }) {
           />
         )}
       </PostGridContainer>
-      <Pagination style={{ margin: '30px 0' }} currentPage={pageContext.currentPage} numberOfPages={pageContext.numPages} />
+      <Pagination 
+        style={{ margin: '30px 0' }} 
+        currentPage={pageContext.currentPage} 
+        numberOfPages={pageContext.numPages} 
+        navProps={navProps}
+      />
     </>
   )
 }
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!, $filter: [String!]) {
-    default: allContentfulTeaReviewPost(
+    descDate: allContentfulTeaReviewPost(
         sort: { fields: [updatedAt], order: DESC }
+        limit: $limit
+        filter: { teaType: { in: $filter } }
+        skip: $skip
+    ) {
+        edges {
+          node {
+            ...PostData
+          }
+        }
+    }
+    ascDate: allContentfulTeaReviewPost(
+        sort: { fields: [updatedAt], order: ASC }
+        limit: $limit
+        filter: { teaType: { in: $filter } }
+        skip: $skip
+    ) {
+        edges {
+          node {
+            ...PostData
+          }
+        }
+    }
+    lowestRating: allContentfulTeaReviewPost(
+        sort: { fields: [rating], order: ASC }
+        limit: $limit
+        filter: { teaType: { in: $filter } }
+        skip: $skip
+    ) {
+        edges {
+          node {
+            ...PostData
+          }
+        }
+    }
+    highestRating: allContentfulTeaReviewPost(
+        sort: { fields: [rating], order: DESC }
         limit: $limit
         filter: { teaType: { in: $filter } }
         skip: $skip

@@ -10,11 +10,12 @@ const FilterContainer = styled.div`
   padding: 10px;
 `
 
-export default function TeaFilterComponent({ value = 'Latest' }) {
+export default function TeaFilterComponent({ setSortOption, value = 'latest' }) {
     const [curSelected, setCurSelected] = useState(value);
 
     const onCheckboxTick = (selected, e) => {
         setCurSelected(selected)
+        setSortOption(selected);
     }
 
     
@@ -22,23 +23,23 @@ export default function TeaFilterComponent({ value = 'Latest' }) {
         <FilterContainer>
             <span><MdSort size={20} />Sort</span>
             <Checkbox 
-                onChange={() => onCheckboxTick('Latest')} 
-                value={curSelected === 'Latest'}
+                onChange={() => onCheckboxTick('latest')} 
+                value={curSelected === 'latest'}
                 label={'Latest'}
             />
             <Checkbox
-                onChange={() => onCheckboxTick('Oldest')}
-                value={curSelected === 'Oldest'}
+                onChange={() => onCheckboxTick('oldest')}
+                value={curSelected === 'oldest'}
                 label={'Oldest'}
             />
             <Checkbox
-                onChange={() => onCheckboxTick('Highest Rating')}
-                value={curSelected === 'Highest Rating'}
+                onChange={() => onCheckboxTick('highestRating')}
+                value={curSelected === 'highestRating'}
                 label={'Highest Rating'}
             />
             <Checkbox
-                onChange={() => onCheckboxTick('Lowest Rating')}
-                value={curSelected === 'Lowest Rating'}
+                onChange={() => onCheckboxTick('lowestRating')}
+                value={curSelected === 'lowestRating'}
                 label={'Lowest Rating'}
             />
         </FilterContainer>

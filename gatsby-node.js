@@ -77,7 +77,7 @@ exports.createPages = ({ graphql, actions }) => {
         posts.forEach((post, index) => {
           createPage({
             path: `/tea-reviews/${post.node.slug}/`,
-            component: path.resolve('./src/templates/teaBlogPost.js'),
+            component: path.resolve('./src/templates/teaReviewPost.js'),
             context: {
               slug: post.node.slug
             },

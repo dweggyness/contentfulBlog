@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby" // highlight-line
 
 // highlight-start
-export default function BlogPost({ data }) {
+export default function ReviewPost({ data }) {
   const post = data.contentfulTeaReviewPost
   // highlight-end
   return (

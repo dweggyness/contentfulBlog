@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { TeaReviewBlogPost, TeaSortComponent, TeaFilterComponent,  Pagination } from '../components';
+import { TeaReviewPost, TeaSortComponent, TeaFilterComponent, Pagination } from '../components';
 import bgImageLight from '../../static/seigaihaLight.png'
 import bgImageDark from '../../static/seigaihaDark.png'
 
@@ -90,7 +90,7 @@ export default function TeaReviewList({ location: { state }, pageContext, data }
       <BackgroundDivider />
       <PostGridContainer>
         {posts.map((post, i) => 
-          <TeaReviewBlogPost 
+          <TeaReviewPost 
             thumbnail={post.node.thumbnail}
             title={`${post.node.teaSource} ${post.node.teaName}`} 
             slug={post.node.slug}

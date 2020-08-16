@@ -77,7 +77,7 @@ const DetailContent = styled(DetailTitle)`
   font-size: 13px;
 `
 
-export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, teaRating, postCreationDate }) {
+export default function TeaReviewPost({ thumbnail, title, slug, teaType, teaRating, postCreationDate }) {
   const [isHovered, setIsHovered] = useState(false);
   const theme = useContext(ThemeContext);
   

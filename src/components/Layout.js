@@ -98,7 +98,7 @@ export default function Layout({ children }) {
 
 export const query = graphql`
   fragment PostData on ContentfulTeaReviewPost {
-    updatedAt
+    updatedAt(formatString: "DD.MM.YY")
     teaName
     teaSource
     rating

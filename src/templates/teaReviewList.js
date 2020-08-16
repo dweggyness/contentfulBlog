@@ -72,7 +72,7 @@ export default function TeaReviewList({ location: { state }, pageContext, data }
       }
       setNavProps({ sortOption })
     }
-  }, sortOption)
+  }, [data, sortOption])
 
   return (
     <>
@@ -94,8 +94,8 @@ export default function TeaReviewList({ location: { state }, pageContext, data }
             title={`${post.node.teaSource} ${post.node.teaName}`} 
             slug={post.node.slug}
             teaType={post.node.teaType}
-            teaPrice={post.node.pricePerGram}
             teaRating={post.node.rating}
+            postCreationDate={post.node.updatedAt}
 
             key={i}
           />

@@ -47,7 +47,6 @@ export default function Home() {
           A catalog of the various teas I have tried, along with my opinions on them.
         </Description>
       </InfoContainer>
-      <span>Hello world!</span>
     </>
   )
 }

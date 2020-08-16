@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
-import { navigate } from 'gatsby'
 import { Checkbox } from '../components'
-import { MdSort } from 'react-icons/md'
+import { FaSort } from 'react-icons/fa'
 
 const FilterContainer = styled.div`
   width: 100%;
   font-size: 16px;
   padding: 10px;
+`
+
+const IconContainer = styled.span`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -2px;
+    font-weight: 600;
 `
 
 export default function TeaFilterComponent({ setSortOption, value = 'latest' }) {
@@ -18,29 +25,35 @@ export default function TeaFilterComponent({ setSortOption, value = 'latest' }) 
         setSortOption(selected);
     }
 
-    
     return (
         <FilterContainer>
-            <span><MdSort size={20} />Sort</span>
+            <IconContainer>
+                <FaSort style={{ marginRight: 5, display: 'block' }} size={20} />
+                Sort by
+            </IconContainer>
             <Checkbox 
                 onChange={() => onCheckboxTick('latest')} 
                 value={curSelected === 'latest'}
                 label={'Latest'}
+                style={{ marginTop: 10 }}
             />
             <Checkbox
                 onChange={() => onCheckboxTick('oldest')}
                 value={curSelected === 'oldest'}
                 label={'Oldest'}
+                style={{ marginTop: 5 }}
             />
             <Checkbox
                 onChange={() => onCheckboxTick('highestRating')}
                 value={curSelected === 'highestRating'}
                 label={'Highest Rating'}
+                style={{ marginTop: 5 }}
             />
             <Checkbox
                 onChange={() => onCheckboxTick('lowestRating')}
                 value={curSelected === 'lowestRating'}
                 label={'Lowest Rating'}
+                style={{ marginTop: 5 }}
             />
         </FilterContainer>
     )

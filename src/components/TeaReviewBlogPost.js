@@ -68,15 +68,16 @@ const PostDetail = styled.div`
 const DetailTitle = styled.p`
   font-family: 'Raleway';
   font-weight: 300;
-  font-size: 12px;
+  font-size: 11px;
   margin: 0;
 `
 
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
+  font-size: 13px;
 `
 
-export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, teaPrice, teaRating }) {
+export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, teaRating, postCreationDate }) {
   const [isHovered, setIsHovered] = useState(false);
   const theme = useContext(ThemeContext);
   
@@ -104,21 +105,21 @@ export default function TeaReviewBlogPost({ thumbnail, title, slug, teaType, tea
       </PostTitleContainer>
       <PostDetailsContainer>
         <PostDetail style={{ borderLeft: 'none' }}>
+          <DetailTitle>Date</DetailTitle>
+          <DetailContent>
+            {postCreationDate}
+          </DetailContent>
+        </PostDetail>
+        <PostDetail>
           <DetailTitle>Type</DetailTitle>
           <DetailContent>
             {teaType}
           </DetailContent>
         </PostDetail>
         <PostDetail>
-          <DetailTitle>Price</DetailTitle>
-          <DetailContent>
-            {`RM${teaPrice.toFixed(2)}/g`}
-          </DetailContent>
-        </PostDetail>
-        <PostDetail>
           <DetailTitle>Rating</DetailTitle>
           <DetailContent>
-            <StarRating color={theme.textColor} rating={teaRating} />
+            <StarRating style={{ fontSize: 12 }} color={theme.textColor} rating={teaRating} />
           </DetailContent>
         </PostDetail>
       </PostDetailsContainer>

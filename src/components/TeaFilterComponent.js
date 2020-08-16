@@ -10,6 +10,14 @@ const FilterContainer = styled.div`
   padding: 10px;
 `
 
+const IconContainer = styled.span`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -2px;
+    font-weight: 600;
+`
+
 export default function TeaFilterComponent({ navProps, value }) {
     const [curSelected, setCurSelected] = useState(value);
 
@@ -42,31 +50,39 @@ export default function TeaFilterComponent({ navProps, value }) {
     
     return (
         <FilterContainer>
-            <span><FiFilter size={20} />Filter</span>
+            <IconContainer>
+                <FiFilter style={{ marginRight: 5, display: 'block' }} size={20} />
+                Filter Teas
+            </IconContainer>
             <Checkbox 
                 onChange={(e) => onCheckboxTick('Black Tea', e)} 
                 value={curSelected === 'Black Tea'}
                 label={'Black'}
+                style={{ marginTop: 10 }}
             />
             <Checkbox
                 onChange={(e) => onCheckboxTick('Green Tea', e)}
                 value={curSelected === 'Green Tea'}
                 label={'Green'}
+                style={{ marginTop: 5 }}
             />
             <Checkbox
                 onChange={(e) => onCheckboxTick('Oolong Tea', e)}
                 value={curSelected === 'Oolong Tea'}
                 label={'Oolong'}
+                style={{ marginTop: 5 }}
             />
             <Checkbox
                 onChange={(e) => onCheckboxTick('Pu-erh', e)}
                 value={curSelected === 'Pu-erh'}
                 label={'Pu-erh'}
+                style={{ marginTop: 5 }}
             />
             <Checkbox
                 onChange={(e) => onCheckboxTick('White Tea', e)}
                 value={curSelected === 'White Tea'}
                 label={'White'}
+                style={{ marginTop: 5 }}
             />
         </FilterContainer>
     )

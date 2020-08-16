@@ -12,7 +12,7 @@ const LabelText = styled.p`
     margin: 0 0 0 14px;
     font-family: 'Raleway';
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
 `
 
 const CheckboxInput = styled.input`
@@ -46,10 +46,10 @@ const Checktick = styled.span`
     background-color: ${props => props.theme.textColor};
 `
 
-export default function Checkbox({ label = '', value = false, onChange }) {
+export default function Checkbox({ style, label = '', value = false, onChange }) {
     return (
         <>
-            <CheckboxLabel>
+            <CheckboxLabel style={style}>
                 <CheckboxInput
                     value={value}
                     onChange={onChange}

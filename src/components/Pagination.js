@@ -102,7 +102,7 @@ export default function Switch({ style, navProps, currentPage = 1, numberOfPages
                     navLink = `${navSlugFront}/${navSlug}`;
                 }
                 else if (element === '>') {
-                    content = <MdKeyboardArrowLeft style={{ marginTop: 5 }} />;
+                    content = <MdKeyboardArrowRight style={{ marginTop: 5 }} />;
                     navLink = `${navSlugFront}/${currentPage + 1}`;
                 } else if (element === currentPage) {
                     return (

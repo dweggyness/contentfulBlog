@@ -107,7 +107,7 @@ export const query = graphql`
     slug
     thumbnail {
         fluid(maxWidth: 500) {
-        ...GatsbyContentfulFluid
+            ...GatsbyContentfulFluid
         }
     }
   }

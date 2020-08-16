@@ -14,7 +14,7 @@ const SortFilterContainer = styled.section`
   flex-direction: row;
 
   background-color: ${props => props.theme.modalColor};
-  border-top: ${props => (`2px solid ${props.theme.secondaryColor}`)};
+  border-top: ${props => (`3px solid ${props.theme.primaryColor}`)};
   filter: drop-shadow(0 1px 1px #999);
 
   @media (max-width: 768px) {
@@ -22,7 +22,6 @@ const SortFilterContainer = styled.section`
     margin: 0 10%;
   }
 `
-
 
 const BackgroundDivider = styled.div`
   background-image: ${props => (props.theme.curTheme === 'light' 
@@ -40,7 +39,8 @@ const BackgroundDivider = styled.div`
 
 const PostGridContainer = styled.main`
   display: grid;
-  grid-template: repeat(auto-fill, minmax(200px, 300px)) / repeat(auto-fill, minmax(300px, 1fr));
+  grid-template: repeat(auto-fill, minmax(250px, 300px)) / repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(250px, 300px);
   grid-gap: 3em;
   width: 80%;
 

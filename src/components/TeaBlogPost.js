@@ -8,6 +8,9 @@ const PostContainer = styled.article`
   display: grid;
   grid-template-columns: 0.5fr 3fr 0.5fr;
   grid-template-rows: 2.5fr 0.5fr 40px;
+  
+  width: 100%;
+  height: 100%;
 `
 
 const PostImageContainer = styled(Link)`
@@ -74,6 +77,7 @@ const DetailTitle = styled.p`
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
   font-size: 13px;
+  white-space: nowrap;
 `
 
 export default function TeaReviewPost({ thumbnail, title, slug, postCreationDate }) {
@@ -90,8 +94,8 @@ export default function TeaReviewPost({ thumbnail, title, slug, postCreationDate
         to={`/blog/${slug}`}
       >
         <Img
-          fluid={thumbnail.fluid} 
-          style={{ height: '100%', maxHeight: '100%' }}
+          fluid={{ ...thumbnail.fluid, aspectRatio: 1.377 }} 
+          style={{ minHeight: 0, height: '100%' }}
           imgStyle={{ objectFit: 'cover' }}
           alt={thumbnail.title}
         />

@@ -51,7 +51,7 @@ export default function TeaFilterComponent({ navProps, value }) {
     return (
         <FilterContainer>
             <IconContainer>
-                <FiFilter style={{ marginRight: 5, display: 'block' }} size={20} />
+                <FiFilter style={{ marginRight: 3, display: 'block' }} size={20} />
                 Filter Teas
             </IconContainer>
             <Checkbox 

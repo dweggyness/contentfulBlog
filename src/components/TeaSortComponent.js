@@ -28,7 +28,7 @@ export default function TeaFilterComponent({ setSortOption, value = 'latest' }) 
     return (
         <FilterContainer>
             <IconContainer>
-                <FaSort style={{ marginRight: 5, display: 'block' }} size={20} />
+                <FaSort style={{ marginRight: 3, display: 'block' }} size={20} />
                 Sort by
             </IconContainer>
             <Checkbox 

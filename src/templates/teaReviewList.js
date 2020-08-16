@@ -7,6 +7,7 @@ import bgImageDark from '../../static/seigaihaDark.png'
 
 const SortFilterContainer = styled.section`
   width: 60%;
+  max-width: 600px;
 
   margin: 0 20%;
   display: flex;

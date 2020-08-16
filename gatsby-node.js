@@ -32,7 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
         const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea']
 
         const posts = result.data.allContentfulTeaReviewPost.edges
-        const postsPerPage = 3
+        const postsPerPage = 6
         const numPages = Math.ceil(posts.length / postsPerPage)
 
         // pagination for specific tea types

@@ -15,7 +15,7 @@ const PostImageContainer = styled(Link)`
   grid-area: 1 / 1 / 3 / 4;
 `
 
-const PostTitleContainer = styled.h4`
+const PostTitleContainer = styled.h3`
   grid-area: 2 / 2 / 3 / 3;
   display: grid;
   z-Index: 2;
@@ -32,7 +32,7 @@ const PostTitleContainer = styled.h4`
   pointer-events: none;
 `
 
-const PostLabel = styled.h3`
+const PostLabel = styled.p`
   font-family: 'Raleway';
   font-size: 12px;
   font-weight: ${props => props.theme.curTheme === 'light' ? 500 : 600};

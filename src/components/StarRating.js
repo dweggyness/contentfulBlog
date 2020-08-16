@@ -6,7 +6,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
 // rating: Float, between 0.0 to 5.0. has to be multiples of 0.5
 // returns a horizontal star rating bar. defaults to 5 empty stars if { rating } is invalid.
 
-const StarContainer = styled.div`
+const StarContainer = styled.span`
     display: flex;
 `
 

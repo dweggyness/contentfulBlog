@@ -92,19 +92,19 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
 
     return (
         <Pagination style={style}>
-            {arrayToBeRendered.map((element) => {
+            {arrayToBeRendered.map((element, i) => {
                 if (element === '<') {
                     let navSlug = '';
                     if (currentPage - 1 !== 1) navSlug = currentPage - 1
                     return (
-                        <PageNumber to={`${navSlugFront}/${navSlug}`}>
+                        <PageNumber key={i} to={`${navSlugFront}/${navSlug}`}>
                             <MdKeyboardArrowLeft style={{ marginTop: 5 }} />
                         </PageNumber>
                     )
                 }
                 else if (element === '>') {
                     return (
-                        <PageNumber to={`${navSlugFront}/${currentPage + 1}`}>
+                        <PageNumber key={i} to={`${navSlugFront}/${currentPage + 1}`}>
                             <MdKeyboardArrowRight style={{ marginTop: 5 }} />
                         </PageNumber>
                     )
@@ -112,13 +112,13 @@ export default function Switch({ style, currentPage = 1, numberOfPages = 1 }) {
                 else {
                     if (element === currentPage) 
                         return (
-                            <ActivePageNumber>
+                            <ActivePageNumber key={i}>
                                 {element}
                             </ActivePageNumber>
                         )
-                    else if (element === 1) return <PageNumber to={`${navSlugFront}/`}>{element}</PageNumber>
-                    else if (element !== '...') return <PageNumber to={`${navSlugFront}/${element}`}>{element}</PageNumber>
-                    else return <PageNumber>{element}</PageNumber>
+                    else if (element === 1) return <PageNumber key={i} to={`${navSlugFront}/`}>{element}</PageNumber>
+                    else if (element !== '...') return <PageNumber key={i} to={`${navSlugFront}/${element}`}>{element}</PageNumber>
+                    else return <PageNumber key={i}>{element}</PageNumber>
                 }
             })}
         </Pagination>

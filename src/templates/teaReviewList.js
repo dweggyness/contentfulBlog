@@ -58,7 +58,7 @@ export default function TeaReviewList({ pageContext, data }) {
       </SortFilterContainer>
       <BackgroundDivider />
       <PostGridContainer>
-        {posts.map(post => 
+        {posts.map((post, i) => 
           <TeaReviewBlogPost 
             thumbnail={post.node.thumbnail}
             title={`${post.node.teaSource} ${post.node.teaName}`} 
@@ -66,6 +66,8 @@ export default function TeaReviewList({ pageContext, data }) {
             teaType={post.node.teaType}
             teaPrice={post.node.pricePerGram}
             teaRating={post.node.rating}
+
+            key={i}
           />
         )}
       </PostGridContainer>

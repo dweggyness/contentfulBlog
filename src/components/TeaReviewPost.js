@@ -28,7 +28,7 @@ const PostTitleContainer = styled.h3`
   font-weight: 400;
   font-size: 18px;
   background-color: ${props => props.isHovered 
-    ? hexToRGBA(props.theme.primaryColor, 0.8) 
+    ? hexToRGBA(props.theme.primaryColor, 0.85) 
     : hexToRGBA(props.theme.backgroundColor, 0.85)};
   transition: 0.15s;
   padding: 20px 25px 15px;

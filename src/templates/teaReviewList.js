@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { TeaReviewPost, TeaSortComponent, TeaFilterComponent, Pagination } from '../components';
-import bgImageLight from '../../static/seigaihaLight.png'
-import bgImageDark from '../../static/seigaihaDark.png'
+import { TeaReviewPost, TeaSortComponent, TeaFilterComponent, SeigahaBackground, Pagination } from '../components';
 
 const SortFilterContainer = styled.section`
   width: 60%;
@@ -21,20 +19,6 @@ const SortFilterContainer = styled.section`
     width: 80%;
     margin: 0 10%;
   }
-`
-
-const BackgroundDivider = styled.div`
-  background-image: ${props => (props.theme.curTheme === 'light' 
-    ? `url(${bgImageLight})` 
-    : `url(${bgImageDark})`
-  )};
-  background-repeat: repeat-x;
-
-  z-index: -1;
-  opacity: ${props => (props.theme.curTheme === 'light' ? 0.6 : 0.3)};
-  height: 200px;
-  width: 100%;
-  margin: -50px 0 -100px;
 `
 
 const PostGridContainer = styled.main`
@@ -87,7 +71,7 @@ export default function TeaReviewList({ location: { state }, pageContext, data }
           value={sortOption}
         />
       </SortFilterContainer>
-      <BackgroundDivider />
+      <SeigahaBackground />
       <PostGridContainer>
         {posts.map((post, i) => 
           <TeaReviewPost 

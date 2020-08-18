@@ -8,3 +8,5 @@ export { default as Pagination } from './Pagination';
 export { default as Checkbox } from './Checkbox';
 export { default as TeaFilterComponent } from './TeaFilterComponent';
 export { default as TeaSortComponent } from './TeaSortComponent';
+export { default as TeaReviewPostDetails } from './TeaReviewPostDetails';
+export { default as SeigahaBackground } from './SeigahaBackground';

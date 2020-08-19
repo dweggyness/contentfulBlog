@@ -2,36 +2,24 @@ import React, { useContext } from "react"
 import { graphql } from "gatsby"
 import styled, { ThemeContext } from "styled-components";
 import Image from "gatsby-image"
-import { SeigahaBackground, TeaReviewPostDetails } from '../components';
+import { TeaReviewPostDetails } from '../components';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import useContentfulImage from '../utils/useContentfulImage';
 
 const PostContainer = styled.main`
-  width: 55%;
+  max-width: 780px;
+  margin: 0 24px;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media (max-width: 1024px) {
-    width: 65%;
-  }
-
-  @media (max-width: 768px) {
-    width: 85%;
-  }
 `
 
 const ThumbnailContainer = styled.section`
-  width: 40%;
-
-  @media (max-width: 1024px) {
-    width: 60%;
-  }
-
-  @media (max-width: 768px) {
-    width: 80%;
-  }
+  max-width: 450px;
+  width: 100%;
+  margin: 0 24px;
 `
 
 export default function ReviewPost({ data }) {
@@ -79,7 +67,8 @@ const options = {
           <Image 
             title={node.data.target.fields.title["en-US"]} 
             fluid={fluid} 
-            imgStyle={{ objectFit: 'cover' }}
+            style={{ maxHeight: 350 }}
+            imgStyle={{ objectFit: 'contain' }}
           />
         </div>
       );

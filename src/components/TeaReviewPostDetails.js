@@ -1,15 +1,28 @@
 import React from "react"
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { StarRating } from '.';
 
 import { IoMdBeaker } from 'react-icons/io';
 import { FaRegClock, FaWeightHanging, FaThermometerHalf } from 'react-icons/fa';
+
+const DetailsInitialAnimation = keyframes`
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 const DetailsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-template-rows: 45px 40px 45px;
   
+  animation: 0.55s ease-in ${DetailsInitialAnimation};
+  animation-fill-mode: backwards;
+
   border-top: ${props => (`1px solid ${props.theme.textColor}`)};
   margin: 0 5px;
   box-shadow: 0 1px 2px #999;
@@ -20,8 +33,11 @@ const BrewingParamsContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-template-rows: 40px;
 
+  animation: 0.55s ease-in 0.11s ${DetailsInitialAnimation};
+  animation-fill-mode: backwards;
+
   margin: 0 5px;
-  box-shadow: 0 1px 2px #999;  
+  border: ${props => (`1px solid ${props.theme.textColor}`)}; 
 `
 
 const Detail = styled.div`
@@ -42,6 +58,7 @@ const DetailContent = styled(DetailTitle)`
   font-weight: 600;
   font-size: 13px;
   white-space: nowrap;
+  margin-top: 2px;
 `
 
 const BrewingDetailContent = styled(DetailContent)`

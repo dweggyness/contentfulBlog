@@ -33,7 +33,7 @@ const BrewingParamsContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-template-rows: 40px;
 
-  animation: 0.55s ease-in 0.11s ${DetailsInitialAnimation};
+  animation: 0.55s ease-in 0.24s ${DetailsInitialAnimation};
   animation-fill-mode: backwards;
 
   margin: 0 5px;
@@ -64,6 +64,12 @@ const DetailContent = styled(DetailTitle)`
 const BrewingDetailContent = styled(DetailContent)`
   display: flex;
   align-items: center;
+`
+
+const BrewingParamsTitle = styled.div`
+  margin: 20px 0 2px 5px;
+  animation: 0.55s ease-in 0.12s ${DetailsInitialAnimation};
+  animation-fill-mode: backwards;
 `
 
 export default function TeaReviewPostDetails({ 
@@ -110,7 +116,9 @@ export default function TeaReviewPostDetails({
                 </DetailContent>
                 </Detail>
             </DetailsContainer>
-            <div style={{ marginTop: 20, marginLeft: 5 }}>Brewing Parameters</div>
+            <BrewingParamsTitle>
+              Brewing Parameters
+            </BrewingParamsTitle>
             <BrewingParamsContainer>
                 <Detail>
                 <DetailTitle>Water</DetailTitle>

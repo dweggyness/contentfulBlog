@@ -16,10 +16,6 @@ const NavLink = styled(Link)`
     text-decoration: none;
     transition: 0.15s;
     color: #222;
-
-    &:visited {
-        color: #222;
-    }
         
     &:hover, &:focus {
         color: ${props => props.theme.textColor};
@@ -81,14 +77,6 @@ export default function NavbarLinks ({ onNavigate, setNewTheme }) {
                 onClick={onNavigate}
             >
                 BLOG
-            </NavLink>
-            <NavLink 
-                partiallyActive={true}
-                activeStyle={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}
-                to="/about"
-                onClick={onNavigate}
-            >
-                ABOUT
             </NavLink>
             <ThemeToggleContainer>
                 <Switch onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>

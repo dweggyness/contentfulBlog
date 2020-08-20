@@ -2,23 +2,22 @@ import React, { useState } from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
 import logo from '../../static/Logo.png'
-import Navbar from './Navbar'
+import { Navbar, Footer } from '.'
 
 const headerHeight = '75px';
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
 `
 
 const Main = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
+    flex: 1;
     margin: 50px 0 0;
     font-family: 'Cooper Hewitt';
 `
@@ -40,12 +39,7 @@ const GlobalStyle = createGlobalStyle`
         transition: all 0.1s ease-in;
     }
 `
-/*
-    orange: '#feceab',
-    red: '#ff493d',
-    white: '#fafffa',
-    black: '#333',
-*/
+
 const sharedTheme = {
     primaryColor: '#99b898',
     secondaryColor: '#2d5225',
@@ -91,6 +85,7 @@ export default function Layout({ children }) {
                     <Navbar setNewTheme={setNewTheme}/>
                 </Header>
                 <Main>{children}</Main>
+                <Footer />
             </ThemeProvider>
         </Container>
     )

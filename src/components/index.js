@@ -4,6 +4,7 @@ export { default as TeaReviewPost } from './TeaReviewPost';
 export { default as TeaBlogPost } from './TeaBlogPost';
 export { default as NavbarLinks } from './NavbarLinks';
 export { default as Navbar } from './Navbar';
+export { default as Footer } from './Footer';
 export { default as Pagination } from './Pagination';
 export { default as Checkbox } from './Checkbox';
 export { default as TeaFilterComponent } from './TeaFilterComponent';

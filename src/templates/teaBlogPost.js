@@ -34,6 +34,7 @@ const ImageDescription = styled.div`
   margin: 0 5px;
   padding: 3px 12px;
   
+  filter: brightness(70%);
   font-family: 'Raleway';
   font-weight: 500;
   font-size: 14px;

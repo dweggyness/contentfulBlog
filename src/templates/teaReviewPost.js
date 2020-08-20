@@ -48,8 +48,6 @@ export default function ReviewPost({ data }) {
   const theme = useContext( ThemeContext )
   const post = data.contentfulTeaReviewPost
 
-  console.log(post.post.json);
-
   return (
     <>
       <ThumbnailContainer>

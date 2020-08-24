@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
 import logo from '../../static/Logo.png'
@@ -66,11 +66,13 @@ const darkTheme = {
     textColor: '#EEE',
 }
 
-let persistedTheme = null;
-if (process.isClient) persistedTheme = localStorage.getItem('appearance');
-
 export default function Layout({ children }) {
-    const [curTheme, setCurTheme] = useState(persistedTheme ? persistedTheme : 'light');
+    const [curTheme, setCurTheme] = useState('light');
+
+    useEffect(() => {
+        const persistedTheme = localStorage.getItem('appearance');
+        if (persistedTheme) setCurTheme(persistedTheme);
+    }, [])
 
     const setNewTheme = (theme) => {
         if (theme !== 'light' && theme !== 'dark') setCurTheme('light');

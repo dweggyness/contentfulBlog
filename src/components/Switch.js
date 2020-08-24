@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 /* The switch - the box around the slider */
@@ -53,7 +53,11 @@ const SwitchInput = styled.input`
 `
 
 export default function Switch({ value, onChange }) {
-    const [isChecked, setIsChecked] = useState(value ? value : false);
+    const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        setIsChecked(value);
+    }, [value])
 
     const handleChange = (e) => {
         const newValue = isChecked ? false : true;

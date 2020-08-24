@@ -55,12 +55,13 @@ const Description = styled.div`
 
 const PostGridContainer = styled.main`
   display: grid;
+  align-self: center;
   grid-template: repeat(auto-fill, minmax(250px, 350px)) / repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: minmax(250px, 350px);
   grid-gap: 3em;
-  width: 80%;
+  max-width: 680px;
 
-  margin: 30px 10%;
+  margin: 60px 24px;
 `
 
 export default function Home({ data }) {
@@ -84,7 +85,7 @@ export default function Home({ data }) {
           jun's teahouse
         </Title>
         <Description>
-          <p>Welcome! I'm Jun, and CrabTea is a blog where I document my experience as a beginner foraying
+          <p>Welcome! I'm Jun, and dwegstea is a blog where I document my experience as a beginner foraying
             into the world of tea. I appraise teas according to my personal opinion, log my brewing parameters, 
             and sometimes write about tea-related mishaps.
            </p>

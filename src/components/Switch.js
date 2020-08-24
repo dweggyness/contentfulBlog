@@ -52,8 +52,8 @@ const SwitchInput = styled.input`
     }
 `
 
-export default function Switch({ onChange }) {
-    const [isChecked, setIsChecked] = useState(false);
+export default function Switch({ value, onChange }) {
+    const [isChecked, setIsChecked] = useState(value ? value : false);
 
     const handleChange = (e) => {
         const newValue = isChecked ? false : true;
@@ -64,7 +64,7 @@ export default function Switch({ onChange }) {
     return (
         <SwitchContainer>
             <SwitchInput 
-                value={isChecked}
+                checked={isChecked}
                 onChange={handleChange}
                 type="checkbox"
             />

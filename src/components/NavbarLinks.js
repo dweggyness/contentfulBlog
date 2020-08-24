@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import styled, { ThemeContext } from "styled-components"
+import React from "react"
+import styled from "styled-components"
 import { Link } from "gatsby"
 import Switch from '../components/Switch';
 
@@ -55,10 +55,8 @@ const ThemeSwitchText = styled.span`
     }
 `
 
-export default function NavbarLinks ({ onNavigate, setNewTheme }) {
-    const theme = useContext(ThemeContext);
-
-    const currentThemeText = theme.curTheme === 'light' ? 'LIGHT' : 'DARK';
+export default function NavbarLinks ({ onNavigate, theme, setNewTheme }) {
+    const currentThemeText = theme === 'light' ? 'LIGHT' : 'DARK';
 
     return (
         <>
@@ -79,7 +77,7 @@ export default function NavbarLinks ({ onNavigate, setNewTheme }) {
                 BLOG
             </NavLink>
             <ThemeToggleContainer>
-                <Switch onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>
+                <Switch value={theme === 'dark'} onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>
                 <ThemeSwitchText>{currentThemeText}</ThemeSwitchText>
             </ThemeToggleContainer>
         </>

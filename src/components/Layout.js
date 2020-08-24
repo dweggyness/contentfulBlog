@@ -66,12 +66,17 @@ const darkTheme = {
     textColor: '#EEE',
 }
 
+const persistedTheme = localStorage.getItem('appearance');
+
 export default function Layout({ children }) {
-    const [curTheme, setCurTheme] = useState('light');
+    const [curTheme, setCurTheme] = useState(persistedTheme ? persistedTheme : 'light');
 
     const setNewTheme = (theme) => {
         if (theme !== 'light' && theme !== 'dark') setCurTheme('light');
-        else setCurTheme(theme);
+        else {
+            localStorage.setItem('appearance', theme);
+            setCurTheme(theme);
+        }
     }
 
     return (
@@ -82,7 +87,7 @@ export default function Layout({ children }) {
                     <Link style={{ zIndex: 999, marginLeft: '10%' }} to="/">
                         <img style={{ height: 75 }} src={logo}></img>
                     </Link>
-                    <Navbar setNewTheme={setNewTheme}/>
+                    <Navbar theme={curTheme} setNewTheme={setNewTheme}/>
                 </Header>
                 <Main>{children}</Main>
                 <Footer />

@@ -69,7 +69,7 @@ const Hamburger = styled.div`
     top: 10px;
   }
 `
-export default function Navbar ({ setNewTheme }) {
+export default function Navbar ({ theme, setNewTheme }) {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
@@ -84,6 +84,7 @@ export default function Navbar ({ setNewTheme }) {
             <NavbarLinks 
               onNavigate={() => setNavbarOpen(false)} 
               setNewTheme={setNewTheme} 
+              theme={theme}
             />
         </Navbox>
     </>

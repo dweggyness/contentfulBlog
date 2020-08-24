@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react"
-import styled, { ThemeContext } from "styled-components"
+import React, { useState } from "react"
+import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby" // highlight-line
 import { hexToRGBA } from '../utils/hexToRGBA';
@@ -82,7 +82,6 @@ const DetailContent = styled(DetailTitle)`
 
 export default function TeaReviewPost({ thumbnail, title, slug, postCreationDate }) {
   const [isHovered, setIsHovered] = useState(false);
-  const theme = useContext(ThemeContext);
   
   return (
     <PostContainer>

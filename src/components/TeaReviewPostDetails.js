@@ -80,6 +80,7 @@ export default function TeaReviewPostDetails({
     bgColor,
     teaSource,
     teaType,
+    teaName,
     teaPrice,
     teaRating,
     postCreationDate,
@@ -88,7 +89,6 @@ export default function TeaReviewPostDetails({
     brewingTeaAmount,
     brewingTime
 }) {
-    const teaName = 'super duper long teaname aaaa its overflowing oh no waaaaaa im crying'
     const renderBrewingParams = brewingWaterAmount && brewingTemp && brewingTeaAmount && brewingTime
     return (
         <>

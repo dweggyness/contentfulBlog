@@ -59,9 +59,13 @@ const PostGridContainer = styled.main`
   grid-template: repeat(auto-fill, minmax(250px, 350px)) / repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: minmax(250px, 350px);
   grid-gap: 3em;
-  max-width: 680px;
+  width: 70%;
 
-  margin: 60px 24px;
+  margin: 60px 20px;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
 `
 
 export default function Home({ data }) {

@@ -26,7 +26,11 @@ const PostGridContainer = styled.main`
   grid-gap: 3em;
   width: 80%;
 
-  margin: 0 10%;
+  margin: 0 20px;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
 `
 
 export default function TeaBlogList({ pageContext, data }) {

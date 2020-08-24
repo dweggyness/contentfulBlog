@@ -35,7 +35,7 @@ const Navbox = styled.nav`
         justify-content: flex-start;
         background-color: ${props => props.theme.primaryColor};
         transition: all 0.1s ease-in;
-        opacity: ${props => (props.open ? "100%" : "0%")};
+        opacity: ${props => (props.open ? 1 : 0)};
         top: ${props => (props.open ? "75px" : "-75px")};
     }
 `
@@ -65,7 +65,7 @@ const Hamburger = styled.div`
   }
 
   ::after {
-    opacity: ${props => (props.open ? "0" : "1")};
+    opacity: ${props => (props.open ? 0 : 1)};
     top: 10px;
   }
 `

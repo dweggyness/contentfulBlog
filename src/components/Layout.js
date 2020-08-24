@@ -66,7 +66,8 @@ const darkTheme = {
     textColor: '#EEE',
 }
 
-const persistedTheme = localStorage.getItem('appearance');
+let persistedTheme = null;
+if (process.isClient) persistedTheme = localStorage.getItem('appearance');
 
 export default function Layout({ children }) {
     const [curTheme, setCurTheme] = useState(persistedTheme ? persistedTheme : 'light');

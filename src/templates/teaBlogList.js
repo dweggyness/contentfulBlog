@@ -21,7 +21,8 @@ const BackgroundDivider = styled.div`
 
 const PostGridContainer = styled.main`
   display: grid;
-  grid-template: repeat(auto-fill, minmax(200px, 300px)) / repeat(auto-fill, minmax(300px, 1fr));
+  grid-template: repeat(auto-fill, minmax(250px, 300px)) / repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(250px, 300px);
   grid-gap: 3em;
   width: 80%;
 

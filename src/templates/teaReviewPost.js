@@ -13,7 +13,7 @@ const PostContainer = styled.main`
   padding: 24px 0;
   font-size: 18px;
   line-height: 25px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   font-weight: 300;
   display: flex;
   flex-direction: column;

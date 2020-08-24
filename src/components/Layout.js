@@ -92,18 +92,29 @@ export default function Layout({ children }) {
 }
 
 export const query = graphql`
-  fragment PostData on ContentfulTeaReviewPost {
-    updatedAt(formatString: "DD.MM.YY")
-    teaName
-    teaSource
-    rating
-    teaType
-    pricePerGram
-    slug
-    thumbnail {
-        fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid
+    fragment PostData on ContentfulTeaReviewPost {
+        updatedAt(formatString: "DD.MM.YY")
+        createdAt
+        teaName
+        teaSource
+        rating
+        teaType
+        slug
+        thumbnail {
+            fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+            }
         }
     }
-  }
+    fragment BlogPreview on ContentfulTeaBlogPost {
+        updatedAt(formatString: "DD.MM.YY")
+        createdAt
+        title
+        slug
+        thumbnail {
+            fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+            }
+        }
+    }
 `

@@ -57,7 +57,10 @@ const DetailTitle = styled.p`
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
   font-size: 13px;
+  word-wrap: break-word;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-top: 2px;
 `
 
@@ -76,7 +79,6 @@ export default function TeaReviewPostDetails({
     color,
     bgColor,
     teaSource,
-    teaName,
     teaType,
     teaPrice,
     teaRating,
@@ -86,6 +88,8 @@ export default function TeaReviewPostDetails({
     brewingTeaAmount,
     brewingTime
 }) {
+    const teaName = 'super duper long teaname aaaa its overflowing oh no waaaaaa im crying'
+    const renderBrewingParams = brewingWaterAmount && brewingTemp && brewingTeaAmount && brewingTime
     return (
         <>
             <DetailsContainer>
@@ -116,7 +120,7 @@ export default function TeaReviewPostDetails({
                 </DetailContent>
                 </Detail>
             </DetailsContainer>
-            <BrewingParamsTitle>
+            {renderBrewingParams && <><BrewingParamsTitle>
               Brewing Parameters
             </BrewingParamsTitle>
             <BrewingParamsContainer>
@@ -144,7 +148,7 @@ export default function TeaReviewPostDetails({
                     <FaRegClock style={{ marginRight: 3 }} color={color}/>{`${brewingTime}`}
                 </BrewingDetailContent>
                 </Detail>
-            </BrewingParamsContainer>
+            </BrewingParamsContainer></> }
         </>
     )
 }

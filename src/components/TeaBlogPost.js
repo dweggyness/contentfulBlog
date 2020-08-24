@@ -53,7 +53,7 @@ const PostLabel = styled.p`
 const PostDetailsContainer = styled.div`
   grid-area: 3 / 2 / 4 / 3;
   display: grid;
-  grid-template: 1fr / repeat(3, auto);
+  grid-template: 1fr / repeat(3, 1fr);
   
   border-top: ${props => (`1px solid ${props.theme.textColor}`)};
   margin: 0 5px;
@@ -113,6 +113,8 @@ export default function TeaReviewPost({ thumbnail, title, slug, postCreationDate
             {postCreationDate}
           </DetailContent>
         </PostDetail>
+        <PostDetail></PostDetail>
+        <PostDetail></PostDetail>
       </PostDetailsContainer>
     </PostContainer>
   )

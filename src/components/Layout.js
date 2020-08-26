@@ -53,7 +53,8 @@ const lightTheme = {
     highlightColor: sharedTheme.lightHighlightColor,
     backgroundColor: '#FCFCFC',
     modalColor: '#F3F3F3',
-    textColor: '#222',
+    textColor: '#222222',
+    formInputBorderColor: '#BABABA',
 }
 
 const darkTheme = {
@@ -61,9 +62,9 @@ const darkTheme = {
     curTheme: 'dark',
     highlightColor: sharedTheme.darkHighlightColor,
     primaryColor: '#749273',
-    backgroundColor: '#181238',
-    modalColor: '#0e0b1f',
-    textColor: '#EEE',
+    backgroundColor: '#1D1D1D',
+    modalColor: '#2C2C2C',
+    textColor: '#EEEEEE',
 }
 
 export default function Layout({ children }) {

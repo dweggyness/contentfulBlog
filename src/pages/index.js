@@ -94,7 +94,7 @@ export default function Home({ data }) {
             and sometimes write about tea-related mishaps.
            </p>
           
-          <p>{`This blog serves as my tea journal. Of course, a pen and paper would be functionally equal, but
+          <p>{`This blog serves as my tea journal. Of course, a pen and paper would be functionally similar, but
             its cool to have your own website :)` } </p>
         </Description>
         <LatestPostsTitle>

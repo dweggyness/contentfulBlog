@@ -76,6 +76,14 @@ export default function NavbarLinks ({ onNavigate, theme, setNewTheme }) {
             >
                 BLOG
             </NavLink>
+            <NavLink
+                partiallyActive={true}
+                activeStyle={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}
+                to="/contact"
+                onClick={onNavigate}
+            >
+                CONTACT
+            </NavLink>
             <ThemeToggleContainer>
                 <Switch value={theme === 'dark'} onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>
                 <ThemeSwitchText>{currentThemeText}</ThemeSwitchText>

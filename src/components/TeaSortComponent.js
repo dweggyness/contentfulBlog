@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import queryString from 'query-string';
+import { navigate } from 'gatsby'
 import { Checkbox } from '../components'
 import { FaSort } from 'react-icons/fa'
 
@@ -17,12 +19,18 @@ const IconContainer = styled.span`
     font-weight: 600;
 `
 
-export default function TeaFilterComponent({ setSortOption, value = 'latest' }) {
+export default function TeaFilterComponent({ setSortBy, currentPath, value = 'latest' }) {
     const [curSelected, setCurSelected] = useState(value);
 
     const onCheckboxTick = (selected, e) => {
         setCurSelected(selected)
-        setSortOption(selected);
+        setSortBy(selected);
+        let urlParams = `${queryString.stringify({ sortBy: selected }, {
+            skipEmptyString: true
+        })}`;
+        if (urlParams) urlParams = `?${urlParams}`; // prepend ? if there are url params
+        
+        navigate(`${currentPath}${urlParams}`);
     }
 
     return (
@@ -32,8 +40,8 @@ export default function TeaFilterComponent({ setSortOption, value = 'latest' }) 
                 Sort by
             </IconContainer>
             <Checkbox 
-                onChange={() => onCheckboxTick('latest')} 
-                value={curSelected === 'latest'}
+                onChange={() => onCheckboxTick('')} 
+                value={curSelected === 'latest' || curSelected === ''}
                 label={'Latest'}
                 style={{ marginTop: 10 }}
             />

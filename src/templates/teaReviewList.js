@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
+import queryString from 'query-string';
 import { TeaReviewPost, TeaSortComponent, TeaFilterComponent, SeigahaBackground, Pagination } from '../components';
 
 const SortFilterContainer = styled.section`
@@ -35,44 +36,43 @@ const PostGridContainer = styled.main`
   }
 `
 
-export default function TeaReviewList({ location: { state }, pageContext, data }) {
-  const [sortOption, setSortOption] = useState(state ? state.sortOption : 'latest');
+export default function TeaReviewList({ location: { pathname, search }, pageContext, data }) {
+  const [sortBy, setSortBy] = useState(queryString.parse(search).sortBy ? queryString.parse(search).sortBy : '');
   const [posts, setPosts] = useState(data.descDate.edges);
-  const [navProps, setNavProps] = useState({});
+  const [queryParams, setQueryParams] = useState({});
   const currentFilter = pageContext.filter.length === 1 ? pageContext.filter[0] : null;
 
   useEffect(() => {
-    if (sortOption) { 
-      switch(sortOption) {
-        case 'latest':
-          setPosts(data.descDate.edges);
-          break;
-        case 'oldest':
-          setPosts(data.ascDate.edges);
-          break;
-        case 'lowestRating':
-          setPosts(data.lowestRating.edges);
-          break;
-        case 'highestRating':
-          setPosts(data.highestRating.edges);
-          break;
-        default:
-          setPosts(data.descDate.edges);
-      }
-      setNavProps({ sortOption })
+    switch(sortBy) {
+      case 'latest':
+        setPosts(data.descDate.edges);
+        break;
+      case 'oldest':
+        setPosts(data.ascDate.edges);
+        break;
+      case 'lowestRating':
+        setPosts(data.lowestRating.edges);
+        break;
+      case 'highestRating':
+        setPosts(data.highestRating.edges);
+        break;
+      default:
+        setPosts(data.descDate.edges);
     }
-  }, [data, sortOption])
+    setQueryParams({ sortBy })
+  }, [data, sortBy])
 
   return (
     <>
       <SortFilterContainer>
         <TeaFilterComponent 
           value={currentFilter} 
-          navProps={navProps}
+          queryParams={queryParams}
         />
         <TeaSortComponent 
-          setSortOption={setSortOption} 
-          value={sortOption}
+          setSortBy={setSortBy}
+          value={sortBy}
+          currentPath={pathname}
         />
       </SortFilterContainer>
       <SeigahaBackground />
@@ -94,7 +94,7 @@ export default function TeaReviewList({ location: { state }, pageContext, data }
         style={{ margin: '30px 0' }} 
         currentPage={pageContext.currentPage} 
         numberOfPages={pageContext.numPages} 
-        navProps={navProps}
+        navProps={queryParams}
       />
     </>
   )

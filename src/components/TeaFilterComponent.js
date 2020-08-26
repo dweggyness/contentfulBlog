@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { navigate } from 'gatsby'
+import queryString from 'query-string';
 import { Checkbox } from '../components'
 import { FiFilter } from 'react-icons/fi'
 
@@ -18,29 +19,34 @@ const IconContainer = styled.span`
     font-weight: 600;
 `
 
-export default function TeaFilterComponent({ navProps, value }) {
+export default function TeaFilterComponent({ queryParams, value }) {
     const [curSelected, setCurSelected] = useState(value);
 
     const onCheckboxTick = (selected, e) => {
+        let urlParams = `${queryString.stringify(queryParams, {
+            skipEmptyString: true
+        })}`;
+        if (urlParams) urlParams = `?${urlParams}`; // prepend ? if there are url params
+
         if (e.target.checked === false) { // untick a filter
             setCurSelected('');
-            navigate('/tea-reviews', { state: navProps });
+            navigate(`/tea-reviews${urlParams}`);
         } else {
             switch(selected) {
                 case 'Black Tea':
-                    navigate('/tea-reviews/black-tea', { state: navProps });
+                    navigate(`/tea-reviews/black-tea${urlParams}`);
                     break;
                 case 'Green Tea':
-                    navigate('/tea-reviews/green-tea', { state: navProps });
+                    navigate(`/tea-reviews/green-tea${urlParams}`);
                     break;
                 case 'Oolong Tea':
-                    navigate('/tea-reviews/oolong-tea', { state: navProps });
+                    navigate(`/tea-reviews/oolong-tea${urlParams}`);
                     break;
                 case 'Pu-erh':
-                    navigate('/tea-reviews/pu-erh', { state: navProps });
+                    navigate(`/tea-reviews/pu-erh${urlParams}`);
                     break;
                 case 'White Tea':
-                    navigate('/tea-reviews/white-tea', { state: navProps });
+                    navigate(`/tea-reviews/white-tea${urlParams}`);
                     break;
                 default:
             }

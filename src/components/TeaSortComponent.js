@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import queryString from 'query-string';
 import { navigate } from 'gatsby'
@@ -21,6 +21,13 @@ const IconContainer = styled.span`
 
 export default function TeaFilterComponent({ setSortBy, currentPath, value = 'latest' }) {
     const [curSelected, setCurSelected] = useState(value);
+
+    useEffect(() => {
+        const validSortingOptions = ['latest','oldest','highestRating','lowestRating'];
+        if (validSortingOptions.includes(value) !== true) {
+            setCurSelected('');
+        } 
+    }, [value])
 
     const onCheckboxTick = (selected, e) => {
         setCurSelected(selected)

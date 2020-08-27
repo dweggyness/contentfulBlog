@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 
 const ContactContainer = styled.div`
   max-width: 730px;
@@ -132,6 +133,10 @@ const Button = styled.button`
 export default function Home() {
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Contact</title>
+      </Helmet>
       <ContactContainer>
           <Title>contact</Title>
           <Description>Feel free to drop me a message! Recommend me a tea, ask for opinions, or anything at all!</Description>

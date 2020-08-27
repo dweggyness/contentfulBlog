@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 import styled, { ThemeContext } from "styled-components";
 import Image from "gatsby-image"
 import { TeaReviewPostDetails } from '../components';
@@ -50,6 +51,10 @@ export default function ReviewPost({ data }) {
 
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>{post.teaName}</title>
+      </Helmet>
       <ThumbnailContainer>
         <Image 
           fluid={post.thumbnail.fluid}

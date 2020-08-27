@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import { TeaBlogPost, Pagination } from '../components';
 import bgImageLight from '../../static/seigaihaLight.png'
@@ -38,6 +39,11 @@ export default function TeaBlogList({ pageContext, data }) {
 
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="A list of tea-related blog posts."></meta>
+          <title>Tea Blog</title>
+      </Helmet>
       <BackgroundDivider />
       <PostGridContainer>
         {posts.map((post, i) => 

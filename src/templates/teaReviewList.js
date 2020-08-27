@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import queryString from 'query-string';
 import { TeaReviewPost, TeaSortComponent, TeaFilterComponent, SeigahaBackground, Pagination } from '../components';
@@ -64,6 +65,11 @@ export default function TeaReviewList({ location: { pathname, search }, pageCont
 
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="A list of the tea reviews I have made."></meta>
+          <title>Tea Reviews</title>
+      </Helmet>
       <SortFilterContainer>
         <TeaFilterComponent 
           value={currentFilter} 

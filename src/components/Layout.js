@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
+import { Helmet } from "react-helmet";
 import logo from '../../static/Logo.png'
 import { Navbar, Footer } from '.'
 
@@ -85,6 +86,11 @@ export default function Layout({ children }) {
 
     return (
         <Container>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <meta name="description" content="Dwegstea"></meta>
+                <title>Dwegstea</title>
+            </Helmet>
             <ThemeProvider theme={curTheme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyle />
                 <Header>

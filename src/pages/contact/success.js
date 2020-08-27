@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 import { Link } from "gatsby";
 
 const Container = styled.div`
@@ -50,6 +51,10 @@ const Button = styled.button`
 export default function Home() {
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Success!</title>
+      </Helmet>
       <Container>
           <Title>Success!</Title>
           <Description>Thank you for the message! I'll respond to it... eventually.</Description>

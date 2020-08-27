@@ -42,7 +42,7 @@ export default function TeaFilterComponent({ queryParams, value }) {
                 case 'Oolong Tea':
                     navigate(`/tea-reviews/oolong-tea${urlParams}`);
                     break;
-                case 'Pu-erh':
+                case 'Pu-Erh':
                     navigate(`/tea-reviews/pu-erh${urlParams}`);
                     break;
                 case 'White Tea':
@@ -79,9 +79,9 @@ export default function TeaFilterComponent({ queryParams, value }) {
                 style={{ marginTop: 5 }}
             />
             <Checkbox
-                onChange={(e) => onCheckboxTick('Pu-erh', e)}
-                value={curSelected === 'Pu-erh'}
-                label={'Pu-erh'}
+                onChange={(e) => onCheckboxTick('Pu-Erh', e)}
+                value={curSelected === 'Pu-Erh'}
+                label={'Pu-Erh'}
                 style={{ marginTop: 5 }}
             />
             <Checkbox

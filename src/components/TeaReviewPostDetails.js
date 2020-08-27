@@ -111,7 +111,7 @@ export default function TeaReviewPostDetails({
                 </Detail>
                 <Detail>
                 <DetailTitle>Price</DetailTitle>
-                <DetailContent>{`RM${teaPrice} / g`}</DetailContent>
+                <DetailContent>{teaPrice}</DetailContent>
                 </Detail>
                 <Detail>
                 <DetailTitle>Rating</DetailTitle>

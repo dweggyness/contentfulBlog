@@ -62,7 +62,7 @@ export default function ReviewPost({ data }) {
           teaSource={post.teaSource}
           teaName={post.teaName}
           teaType={post.teaType}
-          teaPrice={post.pricePerGram}
+          teaPrice={post.price}
           teaRating={post.rating}
           postCreationDate={post.updatedAt}
           brewingWaterAmount={post.brewingWaterAmount}
@@ -114,7 +114,7 @@ export const query = graphql`
         teaSource
         rating
         teaType
-        pricePerGram
+        price
         brewingWaterAmount
         brewingTime
         brewingTemp

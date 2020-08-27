@@ -35,7 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
         // redirect
         createRedirect({ fromPath: 'tea-reviews/1', toPath: 'tea-reviews', isPermanent: true });
 
-        const teaTypes = ['Black Tea', 'Green Tea', 'Oolong Tea', 'Pu-erh', 'White Tea']
+        const teaTypes = ['Black Tea', 'Green Tea', 'Oolong Tea', 'Pu-Erh', 'White Tea']
         const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea']
 
         const posts = result.data.allContentfulTeaReviewPost.edges

@@ -61,7 +61,7 @@ export default function ReviewPost({ data }) {
     <>
       <Helmet>
           <meta charSet="utf-8" />
-          <title>{post.teaName}</title>
+          <title>{`${post.teaSource} ${post.teaName}`}</title>
       </Helmet>
       <ThumbnailContainer>
         <Image 

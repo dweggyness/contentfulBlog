@@ -11,9 +11,21 @@ require("dotenv").config({
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Gatsby Contentful starter',
+    title: 'Dwegstea',
+    description: 'A tea blog where I review/appraise various loose leaf tea and tea shops',
+    author: 'Jun Ming',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Dwegstea`,
+        short_name: `Dwegstea`,
+        start_url: `/`,
+        display: `standalone`,
+        icon: `static/dwegsteaLogo.png`,
+      }
+    },
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-react-helmet',
     {

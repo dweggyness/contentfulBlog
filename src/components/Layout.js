@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet";
-import logo from '../../static/Logo.png'
+import dwegsteaBannerLightText from '../../static/dwegsteaBannerLightText.png'
+import dwegsteaBannerDarkText from '../../static/dwegsteaBannerDarkText.png'
 import { Navbar, Footer } from '.'
 
 const headerHeight = '75px';
@@ -95,7 +96,10 @@ export default function Layout({ children }) {
                 <GlobalStyle />
                 <Header>
                     <Link style={{ zIndex: 999, marginLeft: '10%' }} to="/">
-                        <img style={{ height: 75 }} src={logo}></img>
+                        { curTheme === 'light' 
+                            ? <img style={{ height: 75 }} alt="dwegstea logo" src={dwegsteaBannerDarkText}></img>
+                            : <img style={{ height: 75 }} alt="dwegstea logo" src={dwegsteaBannerLightText}></img>
+                        }
                     </Link>
                     <Navbar theme={curTheme} setNewTheme={setNewTheme}/>
                 </Header>

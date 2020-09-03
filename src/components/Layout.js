@@ -51,7 +51,7 @@ const sharedTheme = {
 const lightTheme = {
     ...sharedTheme,
     curTheme: 'light',
-    highlightColor: sharedTheme.lightHighlightColor,
+    highlightColor: sharedTheme.darkHighlightColor,
     backgroundColor: '#FCFCFC',
     modalColor: '#F3F3F3',
     textColor: '#222222',
@@ -61,7 +61,7 @@ const lightTheme = {
 const darkTheme = {
     ...sharedTheme,
     curTheme: 'dark',
-    highlightColor: sharedTheme.darkHighlightColor,
+    highlightColor: sharedTheme.lightHighlightColor,
     primaryColor: '#749273',
     backgroundColor: '#1D1D1D',
     modalColor: '#2C2C2C',

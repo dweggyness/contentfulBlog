@@ -46,7 +46,7 @@ const PostLabel = styled.p`
   left: 25px;
   margin: 0;
   padding: 4px 10px;
-  background-color: ${props => props.theme.curTheme === 'light' ? props.theme.darkHighlightColor : props.theme.lightHighlightColor};
+  background-color: ${props => props.theme.highlightColor};
   opacity: 1;
 `
 

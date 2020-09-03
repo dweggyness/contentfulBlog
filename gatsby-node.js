@@ -12,6 +12,8 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulTeaReviewPost {
               edges {
                 node {
+                  teaName
+                  teaSource
                   teaType
                   slug
                 }
@@ -20,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulTeaBlogPost {
               edges {
                 node {
+                  title
                   slug
                 }
               }
@@ -39,6 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea']
 
         const posts = result.data.allContentfulTeaReviewPost.edges
+        console.log(posts);
         const postsPerPage = 6
         const numPages = Math.ceil(posts.length / postsPerPage)
 
@@ -86,7 +90,9 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/tea-reviews/${post.node.slug}/`,
             component: path.resolve('./src/templates/teaReviewPost.js'),
             context: {
-              slug: post.node.slug
+              slug: post.node.slug,
+              prev: index === 0 ? null : posts[index - 1].node,
+              next: index === (posts.length - 1) ? null : posts[index + 1].node
             },
           })
         })
@@ -100,7 +106,9 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/blog/${post.node.slug}/`,
             component: path.resolve('./src/templates/teaBlogPost.js'),
             context: {
-              slug: post.node.slug
+              slug: post.node.slug,
+              prev: index === 0 ? null : blogPosts[index - 1].node,
+              next: index === (blogPosts.length - 1) ? null : blogPosts[index + 1].node
             },
           })
         })

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import styled, { ThemeContext } from "styled-components";
 import Image from "gatsby-image"
 import { TeaReviewPostDetails } from '../components';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import useContentfulImage from '../utils/useContentfulImage';
 
@@ -45,7 +45,15 @@ const BoldedText = styled.span`
   font-size: 24px;
 `
 
-export default function ReviewPost({ data }) {
+const AnchorTag = styled.a`
+  color: ${props => props.theme.highlightColor};
+
+  &:hover {
+    color: ${props => props.theme.primaryColor};
+  }
+`
+
+export default function ReviewPost({ data, pageContext }) {
   const theme = useContext( ThemeContext )
   const post = data.contentfulTeaReviewPost
 
@@ -88,6 +96,15 @@ const options = {
     [MARKS.BOLD]: text => <BoldedText>{text}</BoldedText>,
   },
   renderNode: {
+    [INLINES.HYPERLINK]: (node) => {
+      return (
+        <AnchorTag
+          href={node.data.uri}
+        >
+          {node.content[0].value}
+        </AnchorTag>
+      )
+    },
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const fluid = useContentfulImage(
         node.data.target.fields.file["en-US"].url
@@ -95,11 +112,11 @@ const options = {
       const description = node.data.target.fields.description["en-US"];
 
       return (
-        <div style={{ width: '85%' }}>
+        <div style={{ alignSelf: 'center', width: '85%' }}>
           <Image 
             title={node.data.target.fields.title["en-US"]} 
             fluid={fluid} 
-            style={{ height: '100%', maxHeight: 350 }}
+            style={{  height: '100%', maxHeight: 350 }}
             imgStyle={{ objectFit: 'contain' }}
           />
           <ImageDescription>

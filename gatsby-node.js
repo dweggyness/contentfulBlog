@@ -42,7 +42,6 @@ exports.createPages = ({ graphql, actions }) => {
         const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea']
 
         const posts = result.data.allContentfulTeaReviewPost.edges
-        console.log(posts);
         const postsPerPage = 6
         const numPages = Math.ceil(posts.length / postsPerPage)
 
@@ -91,8 +90,8 @@ exports.createPages = ({ graphql, actions }) => {
             component: path.resolve('./src/templates/teaReviewPost.js'),
             context: {
               slug: post.node.slug,
-              prev: index === 0 ? null : posts[index - 1].node,
-              next: index === (posts.length - 1) ? null : posts[index + 1].node
+              prevSlug: index === 0 ? null : posts[index - 1].node.slug,
+              nextSlug: index === (posts.length - 1) ? null : posts[index + 1].node.slug
             },
           })
         })

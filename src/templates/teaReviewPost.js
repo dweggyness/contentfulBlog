@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled, { ThemeContext } from "styled-components";
 import Image from "gatsby-image"
@@ -7,6 +7,7 @@ import { TeaReviewPostDetails } from '../components';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import useContentfulImage from '../utils/useContentfulImage';
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 const PostContainer = styled.main`
   max-width: 730px;
@@ -20,8 +21,38 @@ const PostContainer = styled.main`
   flex-direction: column;
 
   p {
-    margin: 12px;
+    margin: 12px 0;
   }
+`
+
+const ContinuedReadingContainer = styled.section`
+  display: flex;
+  justify-content: space-between;
+  max-width: 730px;
+  width: 100%;
+  margin: 24px 0;
+  border-top: ${props => `1px solid ${props.theme.textColor}`};
+
+  justify-content: space-between;
+`
+
+const NextPostContainer = styled(Link)`
+  color: ${props => props.theme.textColor};
+  text-decoration: none;
+  
+  display: flex;
+  align-items: center;
+
+  &:hover, &:focus {
+    color: ${props => props.theme.primaryColor};
+  }
+`
+
+const NextPostPreview = styled.div`
+  max-width: 200px;
+  padding: 24px 0;
+  width: 100%;
+  text-align: center;
 `
 
 const ThumbnailContainer = styled.section`
@@ -87,6 +118,34 @@ export default function ReviewPost({ data, pageContext }) {
       <PostContainer>
         {post.post && documentToReactComponents(post.post.json, options)}
       </PostContainer>
+      <ContinuedReadingContainer>
+          {data.prev
+          ? <NextPostContainer to={`/tea-reviews/${data.prev.slug}`}>
+              <MdKeyboardArrowLeft size={48} style={{ marginRight: 10 }} />
+              <NextPostPreview>
+              <Image 
+                fluid={data.prev.thumbnail.fluid}
+                style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
+                imgStyle={{ objectFit: 'contain' }}
+              />
+              {`${data.prev.teaSource} ${data.prev.teaName}`}
+              </NextPostPreview>
+            </NextPostContainer>
+          : <div /> }
+          {data.next
+          ? <NextPostContainer to={`/tea-reviews/${data.next.slug}`}>
+              <NextPostPreview>
+              <Image 
+                fluid={data.next.thumbnail.fluid}
+                style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
+                imgStyle={{ objectFit: 'contain' }}
+              />
+              {`${data.next.teaSource} ${data.next.teaName}`}
+              </NextPostPreview>
+              <MdKeyboardArrowRight size={48} style={{ marginLeft: 10 }} />
+            </NextPostContainer>
+          : <div /> }
+      </ContinuedReadingContainer>
     </>
   )
 }
@@ -129,7 +188,7 @@ const options = {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $prevSlug: String, $nextSlug: String) {
     contentfulTeaReviewPost(slug: { eq: $slug }) {
         updatedAt(formatString: "DD.MM.YY")
         teaName
@@ -149,6 +208,26 @@ export const query = graphql`
         post {
           json
         }
+    }
+    prev: contentfulTeaReviewPost(slug: { eq: $prevSlug }) {
+      teaName
+      teaSource
+      slug
+      thumbnail {
+        fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid
+        }
+      }
+    }
+    next: contentfulTeaReviewPost(slug: { eq: $nextSlug }) {
+      teaName
+      teaSource
+      slug
+      thumbnail {
+        fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid
+        }
+      }
     }
   }
 `

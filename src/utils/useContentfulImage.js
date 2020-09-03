@@ -17,5 +17,6 @@ export default assetUrl => {
       }
     `
   );
+  if (assetUrl === undefined || assetUrl === null) return null;
   return allContentfulAsset.nodes.find(n => n.file.url === assetUrl).fluid;
 };

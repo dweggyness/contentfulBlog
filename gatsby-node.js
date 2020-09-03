@@ -106,8 +106,8 @@ exports.createPages = ({ graphql, actions }) => {
             component: path.resolve('./src/templates/teaBlogPost.js'),
             context: {
               slug: post.node.slug,
-              prev: index === 0 ? null : blogPosts[index - 1].node,
-              next: index === (blogPosts.length - 1) ? null : blogPosts[index + 1].node
+              prevSlug: index === 0 ? null : posts[index - 1].node.slug,
+              nextSlug: index === (posts.length - 1) ? null : posts[index + 1].node.slug
             },
           })
         })

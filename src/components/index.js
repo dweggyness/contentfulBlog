@@ -11,3 +11,4 @@ export { default as TeaFilterComponent } from './TeaFilterComponent';
 export { default as TeaSortComponent } from './TeaSortComponent';
 export { default as TeaReviewPostDetails } from './TeaReviewPostDetails';
 export { default as SeigahaBackground } from './SeigahaBackground';
+export { default as ContinuedReading } from './ContinuedReading';

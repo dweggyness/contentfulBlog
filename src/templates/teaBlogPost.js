@@ -70,6 +70,7 @@ export default function BlogPost({ data }) {
           fluid={post.thumbnail.fluid}
           style={{ height: '100%', maxHeight: 350 }}
           imgStyle={{ objectFit: 'cover' }}
+          alt={post.thumbnail.title}
         />
       </ThumbnailContainer>
       <PostContainer>
@@ -110,6 +111,7 @@ const options = {
             fluid={fluid} 
             style={{  height: '100%', maxHeight: 350 }}
             imgStyle={{ objectFit: 'contain' }}
+            alt={node.data.target.fields.title["en-US"]}
           />
           <ImageDescription>
             {description}
@@ -125,6 +127,7 @@ export const query = graphql`
     contentfulTeaBlogPost(slug: { eq: $slug }) {
         title
         thumbnail {
+          title
           fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid
           }
@@ -137,6 +140,7 @@ export const query = graphql`
       title
       slug
       thumbnail {
+        title
         fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid
         }
@@ -146,6 +150,7 @@ export const query = graphql`
       title
       slug
       thumbnail {
+        title
         fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid
         }

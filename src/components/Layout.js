@@ -87,7 +87,7 @@ export default function Layout({ children }) {
 
     return (
         <Container>
-            <Helmet>
+            <Helmet htmlAttributes={{ lang : 'en' }}>
                 <meta charSet="utf-8" />
                 <meta name="description" content="Dwegstea"></meta>
                 <title>Dwegstea</title>

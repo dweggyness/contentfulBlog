@@ -22,6 +22,7 @@ module.exports = {
         name: `Dwegstea`,
         short_name: `Dwegstea`,
         start_url: `/`,
+        lang: `en`,
         display: `standalone`,
         icon: `static/dwegsteaLogo.png`,
       }

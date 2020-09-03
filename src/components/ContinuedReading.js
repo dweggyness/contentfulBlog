@@ -43,10 +43,11 @@ export default function ContinuedReading({prev, next}) {
             ? <NextPostContainer to={`/tea-reviews/${prev.slug}`}>
                 <MdKeyboardArrowLeft size={48} style={{ marginRight: 10 }} />
                 <NextPostPreview>
-                <Image 
-                fluid={prev.thumbnail.fluid}
-                style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
-                imgStyle={{ objectFit: 'contain' }}
+                <Image
+                    alt="preview image for previous post"
+                    fluid={prev.thumbnail.fluid}
+                    style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
+                    imgStyle={{ objectFit: 'contain' }}
                 />
                 {`${prev.teaSource} ${prev.teaName}`}
                 </NextPostPreview>
@@ -56,9 +57,10 @@ export default function ContinuedReading({prev, next}) {
             ? <NextPostContainer style={{ justifyContent: 'flex-end' }} to={`/tea-reviews/${next.slug}`}>
                 <NextPostPreview>
                 <Image 
-                fluid={next.thumbnail.fluid}
-                style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
-                imgStyle={{ objectFit: 'contain' }}
+                    alt="preview image for next post"
+                    fluid={next.thumbnail.fluid}
+                    style={{ marginBottom: 10, maxHeight: 200, height: '100%' }}
+                    imgStyle={{ objectFit: 'contain' }}
                 />
                 {`${next.teaSource} ${next.teaName}`}
                 </NextPostPreview>

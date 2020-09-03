@@ -4,15 +4,22 @@ import styled from "styled-components"
 /* The switch - the box around the slider */
 const SwitchContainer = styled.label`
     position: relative;
-    display: inline-block;
     width: 36px;
-    height: 15px;
-    filter: drop-shadow(0 2px 2px #666);
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+    }
 `
 
 const Slider = styled.span`
     position: absolute;
     cursor: pointer;
+    
+    height: 15px;
+    filter: drop-shadow(0 2px 2px #666);
+
     top: 0;
     left: 0;
     right: 0;
@@ -52,7 +59,20 @@ const SwitchInput = styled.input`
     }
 `
 
-export default function Switch({ value, onChange }) {
+const SwitchText = styled.span`
+    color: #222;
+    margin-top: 16px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 12px;
+
+    @media (max-width: 768px) {
+        margin: 0 0 0 48px;
+        border-radius: 2px;
+    }
+`
+
+export default function Switch({ value, label, onChange }) {
     const [isChecked, setIsChecked] = useState(false);
 
     useEffect(() => {
@@ -73,6 +93,7 @@ export default function Switch({ value, onChange }) {
                 type="checkbox"
             />
             <Slider />
+            <SwitchText>{label}</SwitchText>
         </SwitchContainer>
     )
 }

@@ -35,7 +35,7 @@ const PostTitleContainer = styled.h3`
   pointer-events: none;
 `
 
-const PostLabel = styled.p`
+const PostLabel = styled.span`
   font-family: 'Raleway';
   font-size: 12px;
   font-weight: ${props => props.theme.curTheme === 'light' ? 500 : 600};

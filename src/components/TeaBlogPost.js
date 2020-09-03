@@ -34,7 +34,7 @@ const PostTitleContainer = styled.h3`
   pointer-events: none;
 `
 
-const PostLabel = styled.p`
+const PostLabel = styled.span`
   font-family: 'Raleway';
   font-size: 12px;
   font-weight: ${props => props.theme.curTheme === 'light' ? 500 : 600};
@@ -80,7 +80,7 @@ const DetailContent = styled(DetailTitle)`
   white-space: nowrap;
 `
 
-export default function TeaReviewPost({ thumbnail, title, slug, postCreationDate }) {
+export default function TeaBlogPost({ thumbnail, title, slug, postCreationDate }) {
   const [isHovered, setIsHovered] = useState(false);
   
   return (

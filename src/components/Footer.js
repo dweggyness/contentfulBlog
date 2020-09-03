@@ -51,13 +51,22 @@ export default function Footer() {
         <FooterContainer>
             <FooterText>Published 2020 | Made by Jun Ming</FooterText>
             <FooterLinks>
-                <IconLink href={"https://github.com/dweggyness/contentfulBlog"}>
+                <IconLink 
+                    href={"https://github.com/dweggyness/contentfulBlog"}
+                    alt="Link to my github"
+                >
                     <FaGithub className={'icon'} size={24}/>
                 </IconLink>
-                <IconLink href={"https://www.linkedin.com/in/ooi-jun-ming-1695251a9/"}>
+                <IconLink
+                    href={"https://www.linkedin.com/in/ooi-jun-ming-1695251a9/"}
+                    alt="Link to my linkedin"
+                >
                     <FaLinkedin className={'icon'} size={24}/>
                 </IconLink>
-                <IconLink href={"https://www.instagram.com/ojmming/"}>
+                <IconLink
+                    href={"https://www.instagram.com/ojmming/"}
+                    alt="Link to my instagram"
+                >
                     <GrInstagram className={'icon'} size={22}/>
                 </IconLink>
             </FooterLinks>

@@ -39,19 +39,7 @@ const ThemeToggleContainer = styled.div`
     @media (max-width: 768px) {
         flex-direction: row;
         margin: 25px 0 0;
-    }
-`
-
-const ThemeSwitchText = styled.span`
-    color: #222;
-    margin-top: 8px;
-    font-family: 'Raleway';
-    font-weight: 600;
-    font-size: 12px;
-
-    @media (max-width: 768px) {
-        margin: 0 0 0 12px;
-        border-radius: 2px;
+        padding: 0 0 5px 0px;
     }
 `
 
@@ -85,8 +73,11 @@ export default function NavbarLinks ({ onNavigate, theme, setNewTheme }) {
                 CONTACT
             </NavLink>
             <ThemeToggleContainer>
-                <Switch value={theme === 'dark'} onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}/>
-                <ThemeSwitchText>{currentThemeText}</ThemeSwitchText>
+                <Switch 
+                    label={currentThemeText}
+                    value={theme === 'dark'} 
+                    onChange={(e) => e ? setNewTheme('dark') : setNewTheme('light')}
+                />
             </ThemeToggleContainer>
         </>
     )

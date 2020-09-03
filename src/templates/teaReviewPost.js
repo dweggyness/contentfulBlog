@@ -68,6 +68,7 @@ export default function ReviewPost({ data }) {
           fluid={post.thumbnail.fluid}
           style={{ maxHeight: 400, height: '100%' }}
           imgStyle={{ objectFit: 'contain' }}
+          alt={post.thumbnail.title}
         />
         <TeaReviewPostDetails 
           color={theme.textColor}
@@ -122,6 +123,7 @@ const options = {
             fluid={fluid} 
             style={{  height: '100%', maxHeight: 350 }}
             imgStyle={{ objectFit: 'contain' }}
+            alt={node.data.target.fields.title["en-US"]}
           />
           <ImageDescription>
             {description}
@@ -146,6 +148,7 @@ export const query = graphql`
         brewingTemp
         brewingTeaAmount
         thumbnail {
+          title
           fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid
           }
@@ -159,6 +162,7 @@ export const query = graphql`
       teaSource
       slug
       thumbnail {
+        title
         fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid
         }
@@ -169,6 +173,7 @@ export const query = graphql`
       teaSource
       slug
       thumbnail {
+        title
         fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid
         }

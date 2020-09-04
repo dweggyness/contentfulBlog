@@ -40,7 +40,7 @@ const LatestPostsTitle = styled.p`
   font-size: 1.8em;
   font-weight: 600;
 
-  margin: 60px 0 0;
+  margin: 30px 0 0;
 `
 
 const Description = styled.div`

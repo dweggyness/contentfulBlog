@@ -6,9 +6,9 @@ import { Checkbox } from '../components'
 import { FaSort } from 'react-icons/fa'
 
 const FilterContainer = styled.div`
-  width: 100%;
-  font-size: 0.8em;
-  padding: 10px;
+    width: 100%;
+    font-size: 0.8em;
+    padding: 10px;
 `
 
 const IconContainer = styled.span`

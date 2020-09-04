@@ -50,13 +50,13 @@ const Detail = styled.div`
 const DetailTitle = styled.p`
   font-family: 'Raleway';
   font-weight: 300;
-  font-size: 0.55em;
+  font-size: 11px;
   margin: 0;
 `
 
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
-  font-size: 0.65em;
+  font-size: 13px;
   word-wrap: break-word;
   white-space: nowrap;
   overflow: hidden;

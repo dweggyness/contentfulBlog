@@ -30,7 +30,7 @@ const Title = styled.h1`
 `
 
 const Description = styled.h2`
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 500;
 `
 

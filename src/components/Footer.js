@@ -15,13 +15,14 @@ const FooterContainer = styled.footer`
     justify-content: space-between;
     
     @media (max-width: 768px) {
-        width: 90%;
-        padding: 0 5%;
+        width: 95%;
+        padding: 0 2.5%;
     }
 `
 
 const FooterText = styled.span`
     font-family: 'Raleway';
+    font-size: 0.8em;
     color: #222;
     justify-content: center;
 `

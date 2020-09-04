@@ -56,7 +56,7 @@ const DetailTitle = styled.p`
 
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
-  font-size: 13px;
+  font-size: 0.65em;
   word-wrap: break-word;
   white-space: nowrap;
   overflow: hidden;

@@ -39,9 +39,8 @@ const LatestPostsTitle = styled.p`
   padding: 0;
   font-size: 1.8em;
   font-weight: 600;
-  width: 80%;
 
-  margin: 60px 10% 0;
+  margin: 60px 0 0;
 `
 
 const Description = styled.div`

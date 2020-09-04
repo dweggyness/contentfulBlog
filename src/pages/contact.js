@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
+import { Link } from "gatsby";
 
 const ContactContainer = styled.div`
   max-width: 730px;
@@ -130,7 +131,13 @@ const Button = styled.button`
   }
 `
 
-export default function Home() {
+export default function Home({ location }) {
+  let formSubmitted = false;
+
+  if (location.hash === '#success') {
+    formSubmitted = true;
+  }
+  
   return (
     <>
       <Helmet>
@@ -138,10 +145,17 @@ export default function Home() {
           <title>Contact</title>
       </Helmet>
       <ContactContainer>
+          {formSubmitted && <>
+          <Title>Success!</Title>
+          <Description>Thank you for the message! I'll respond to it... eventually.</Description>
+          <Link to={'/'}><Button>Go Home</Button></Link> 
+          </> }
+        
+          {!formSubmitted && <>
           <Title>contact</Title>
           <Description>Feel free to drop me a message! Recommend me a tea, ask for opinions, or anything at all!</Description>
 
-          <Form name="contact" method="POST" data-netlify="true" action="/contact/success">
+          <Form name="contact" method="POST" data-netlify="true" action="#success">
               <input type="hidden" name="form-name" value="contact" />
               <InputLabel>
                   <Input placeholder="Name" type="text" name="name" required/>
@@ -154,6 +168,7 @@ export default function Home() {
               </TextBoxLabel>
               <Button type="submit">Send</Button>
           </Form>
+          </> }
       </ContactContainer>
     </>
   )

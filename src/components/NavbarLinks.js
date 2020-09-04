@@ -12,7 +12,7 @@ const NavLink = styled(Link)`
 
     font-family: 'Raleway';
     font-weight: 600;
-    font-size: 20px;
+    font-size: 1em;
     text-decoration: none;
     transition: 0.15s;
     color: #222;

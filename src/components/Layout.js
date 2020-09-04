@@ -36,9 +36,14 @@ const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         margin: 0;
+        font-size: 20px;
         color: ${props => props.theme.textColor};
         background-color: ${props => props.theme.backgroundColor};
         transition: all 0.1s ease-in;
+
+        @media (max-width: 768px) {
+            font-size: 18px;
+        }
     }
 `
 

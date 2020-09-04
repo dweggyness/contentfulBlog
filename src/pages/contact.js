@@ -10,7 +10,7 @@ const ContactContainer = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 1.8em;
   font-weight: 700;
   font-family: Raleway;
   margin: 0;
@@ -30,7 +30,7 @@ const Title = styled.h1`
 `
 
 const Description = styled.h2`
-  font-size: 24px;
+  font-size: 1.2em;
   font-weight: 500;
 `
 

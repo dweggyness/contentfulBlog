@@ -64,7 +64,7 @@ const SwitchText = styled.span`
     margin-top: 16px;
     font-family: 'Raleway';
     font-weight: 600;
-    font-size: 12px;
+    font-size: 0.6em;
 
     @media (max-width: 768px) {
         margin: 0 0 0 48px;

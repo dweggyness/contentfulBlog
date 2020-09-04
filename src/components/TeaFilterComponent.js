@@ -7,7 +7,7 @@ import { FiFilter } from 'react-icons/fi'
 
 const FilterContainer = styled.div`
   width: 100%;
-  font-size: 16px;
+  font-size: 0.8em;
   padding: 10px;
 `
 

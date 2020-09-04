@@ -10,7 +10,7 @@ const CheckboxLabel = styled.label`
 const LabelText = styled.p`
     margin: 0 0 0 14px;
     font-family: 'Raleway';
-    font-size: 14px;
+    font-size: 0.7em;
     font-weight: 400;
 `
 

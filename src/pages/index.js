@@ -13,7 +13,7 @@ const InfoContainer = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 1.8em;
   font-weight: 700;
   font-family: Raleway;
   margin: 0;
@@ -37,7 +37,7 @@ const LatestPostsTitle = styled.p`
   justify-content: center;
   align-items: center;
   padding: 0;
-  font-size: 36px;
+  font-size: 1.8em;
   font-weight: 600;
   width: 80%;
 
@@ -46,7 +46,7 @@ const LatestPostsTitle = styled.p`
 
 const Description = styled.div`
   padding: 0;
-  font-size: 20px;
+  font-size: 1em;
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 0.2px;

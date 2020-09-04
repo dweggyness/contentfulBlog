@@ -12,7 +12,7 @@ const PostContainer = styled.main`
   max-width: 730px;
   margin: 0 24px;
   padding: 24px 0;
-  font-size: 18px;
+  font-size: 0.9em;
   line-height: 25px;
   letter-spacing: 0.2px;
   font-weight: 300;
@@ -39,12 +39,12 @@ const ImageDescription = styled.div`
   filter: brightness(70%);
   font-family: 'Raleway';
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.7em;
 `
 
 const BoldedText = styled.span`
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.2em;
 `
 
 const AnchorTag = styled.a`

@@ -25,7 +25,7 @@ const PostTitleContainer = styled.h3`
   position: relative;
   margin: 0;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 0.9em;
   background-color: ${props => props.isHovered 
     ? hexToRGBA(props.theme.primaryColor, 0.8) 
     : hexToRGBA(props.theme.backgroundColor, 0.85)};
@@ -36,7 +36,7 @@ const PostTitleContainer = styled.h3`
 
 const PostLabel = styled.span`
   font-family: 'Raleway';
-  font-size: 12px;
+  font-size: 0.6em;
   font-weight: ${props => props.theme.curTheme === 'light' ? 500 : 600};
   color: ${props => props.theme.curTheme === 'light' ? '#EEEEEE' : props.theme.secondaryColor};
 
@@ -70,13 +70,13 @@ const PostDetail = styled.div`
 const DetailTitle = styled.p`
   font-family: 'Raleway';
   font-weight: 300;
-  font-size: 11px;
+  font-size: 0.55em;
   margin: 0;
 `
 
 const DetailContent = styled(DetailTitle)`
   font-weight: 600;
-  font-size: 13px;
+  font-size: 0.65em;
   white-space: nowrap;
 `
 

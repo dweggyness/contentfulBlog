@@ -7,7 +7,7 @@ import { FaSort } from 'react-icons/fa'
 
 const FilterContainer = styled.div`
   width: 100%;
-  font-size: 16px;
+  font-size: 0.8em;
   padding: 10px;
 `
 

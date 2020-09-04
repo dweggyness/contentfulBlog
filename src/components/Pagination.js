@@ -13,7 +13,7 @@ const PageNumber = styled(Link)`
     display: flex;
     align-items: center;
     font-family: 'Open Sans';
-    font-size: 18px;
+    font-size: 0.9em;
     margin: 0 8px;
     color: ${props => props.theme.textColor};
     text-decoration: none;
@@ -26,7 +26,7 @@ const PageNumber = styled(Link)`
 
 const ActivePageNumber = styled.span`
     font-family: 'Open Sans';
-    font-size: 18px;
+    font-size: 0.9em;
     margin: 0 8px;
     font-weight: 600;
 `

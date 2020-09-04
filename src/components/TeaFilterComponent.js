@@ -48,6 +48,9 @@ export default function TeaFilterComponent({ queryParams, value }) {
                 case 'White Tea':
                     navigate(`/tea-reviews/white-tea${urlParams}`);
                     break;
+                case 'Herbal Tea':
+                    navigate(`/tea-reviews/herbal-tea${urlParams}`);
+                    break;
                 default:
             }
         }
@@ -88,6 +91,12 @@ export default function TeaFilterComponent({ queryParams, value }) {
                 onChange={(e) => onCheckboxTick('White Tea', e)}
                 value={curSelected === 'White Tea'}
                 label={'White'}
+                style={{ marginTop: 5 }}
+            />
+            <Checkbox
+                onChange={(e) => onCheckboxTick('Herbal Tea', e)}
+                value={curSelected === 'Herbal Tea'}
+                label={'Herbal'}
                 style={{ marginTop: 5 }}
             />
         </FilterContainer>

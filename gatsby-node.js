@@ -38,15 +38,15 @@ exports.createPages = ({ graphql, actions }) => {
         // redirect
         createRedirect({ fromPath: 'tea-reviews/1', toPath: 'tea-reviews', isPermanent: true });
 
-        const teaTypes = ['Black Tea', 'Green Tea', 'Oolong Tea', 'Pu-Erh', 'White Tea']
-        const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea']
+        const teaTypes = ['Black Tea', 'Green Tea', 'Oolong Tea', 'Pu-Erh', 'White Tea', 'Herbal Tea']
+        const teaFilterSlugs = ['black-tea','green-tea','oolong-tea','pu-erh','white-tea','herbal-tea']
 
         const posts = result.data.allContentfulTeaReviewPost.edges
         const postsPerPage = 6
         const numPages = Math.ceil(posts.length / postsPerPage)
 
         // pagination for specific tea types
-        for (let i = 0; i < 5; i++ ) {
+        for (let i = 0; i < 6; i++ ) {
           const curTeaType = teaTypes[i];
           const curSlug = teaFilterSlugs[i];
 

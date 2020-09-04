@@ -13,7 +13,7 @@ const PostContainer = styled.main`
   margin: 0 24px;
   padding: 24px 0;
   font-size: 18px;
-  line-height: 25px;
+  line-height: 27px;
   letter-spacing: 0.2px;
   font-weight: 300;
   display: flex;
@@ -117,7 +117,7 @@ const options = {
       const description = node.data.target.fields.description["en-US"];
 
       return (
-        <div style={{ alignSelf: 'center', width: '85%' }}>
+        <div style={{ alignSelf: 'center', margin: '24px 0', width: '85%' }}>
           <Image 
             title={node.data.target.fields.title["en-US"]} 
             fluid={fluid} 

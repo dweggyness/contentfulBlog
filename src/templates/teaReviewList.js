@@ -100,7 +100,7 @@ export default function TeaReviewList({ location: { pathname, search }, pageCont
         style={{ margin: '30px 0' }} 
         currentPage={pageContext.currentPage} 
         numberOfPages={pageContext.numPages} 
-        navProps={queryParams}
+        queryParams={queryParams}
       />
     </>
   )

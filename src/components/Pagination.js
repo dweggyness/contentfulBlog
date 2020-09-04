@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby";
+import queryString from 'query-string';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 const Pagination = styled.nav`
@@ -35,9 +36,14 @@ const ActivePageNumber = styled.span`
 // arrayToBeGenerated
 // [<, 1, 2, ..., 7, 8, 9, ..., 12, 13, >]
 
-export default function Switch({ style, navProps, currentPage = 1, numberOfPages = 1 }) {
+export default function Switch({ style, queryParams, currentPage = 1, numberOfPages = 1 }) {
     const shouldRenderLeftArrow = currentPage > 1;
     const shouldRenderRightArrow = currentPage < numberOfPages;
+
+    let urlParams = `${queryString.stringify(queryParams, {
+        skipEmptyString: true
+    })}`;
+    if (urlParams) urlParams = `?${urlParams}`; // prepend ? if there are url params
 
     const generateArrayToRender = () => {
         const arr = [];
@@ -120,7 +126,7 @@ export default function Switch({ style, navProps, currentPage = 1, numberOfPages
                 else return <PageNumber key={i}>{element}</PageNumber>
 
                 return (
-                    <PageNumber state={navProps} key={i} to={navLink}>
+                    <PageNumber key={i} to={`${navLink}${urlParams}`}>
                         {content}
                     </PageNumber>
                 )

@@ -60,6 +60,7 @@ const PostGridContainer = styled.main`
   grid-gap: 3em;
   width: 70%;
   height: auto;
+  overflow: hidden;
 
   margin: 60px 20px;
 

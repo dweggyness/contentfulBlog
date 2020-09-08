@@ -84,6 +84,7 @@ export default function TeaBlogPost({ thumbnail, title, slug, postCreationDate }
   const [isHovered, setIsHovered] = useState(false);
   
   return (
+    <div style={{ display: 'block' }} >
     <PostContainer>
       <PostImageContainer 
         onMouseEnter={() => setIsHovered(true)}
@@ -116,5 +117,6 @@ export default function TeaBlogPost({ thumbnail, title, slug, postCreationDate }
         <PostDetail></PostDetail>
       </PostDetailsContainer>
     </PostContainer>
+    </div>
   )
 }

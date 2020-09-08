@@ -59,7 +59,6 @@ const PostGridContainer = styled.main`
   grid-auto-rows: minmax(250px, 350px);
   grid-gap: 3em;
   width: 70%;
-  height: auto;
 
   margin: 60px 20px;
 

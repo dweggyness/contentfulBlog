@@ -86,47 +86,49 @@ export default function TeaReviewPost({ thumbnail, title, slug, teaType, teaRati
   const theme = useContext(ThemeContext);
   
   return (
-    <PostContainer>
-      <PostImageContainer 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onFocus={() => setIsHovered(true)}
-        onBlur={() => setIsHovered(false)}
-        to={`/tea-reviews/${slug}`}
-      >
-        <Img
-          fluid={{ ...thumbnail.fluid, aspectRatio: 1.377 }} 
-          style={{ minHeight: 0, height: '100%' }}
-          imgStyle={{ objectFit: 'cover' }}
-          alt={thumbnail.title}
-        />
-      </PostImageContainer>
-      <PostTitleContainer
-        isHovered={isHovered}
-      >
-        <PostLabel>REVIEW</PostLabel> 
-        {title}
-      </PostTitleContainer>
-      <PostDetailsContainer>
-        <PostDetail style={{ borderLeft: 'none' }}>
-          <DetailTitle>Date</DetailTitle>
-          <DetailContent>
-            {postCreationDate}
-          </DetailContent>
-        </PostDetail>
-        <PostDetail>
-          <DetailTitle>Type</DetailTitle>
-          <DetailContent>
-            {teaType}
-          </DetailContent>
-        </PostDetail>
-        <PostDetail>
-          <DetailTitle>Rating</DetailTitle>
-          <DetailContent>
-            <StarRating style={{ fontSize: 12 }} color={theme.textColor} rating={teaRating} />
-          </DetailContent>
-        </PostDetail>
-      </PostDetailsContainer>
-    </PostContainer>
+    <div style={{ display: 'block' }} >
+      <PostContainer>
+        <PostImageContainer 
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onFocus={() => setIsHovered(true)}
+          onBlur={() => setIsHovered(false)}
+          to={`/tea-reviews/${slug}`}
+        >
+          <Img
+            fluid={{ ...thumbnail.fluid, aspectRatio: 1.377 }} 
+            style={{ minHeight: 0, height: '100%' }}
+            imgStyle={{ objectFit: 'cover' }}
+            alt={thumbnail.title}
+          />
+        </PostImageContainer>
+        <PostTitleContainer
+          isHovered={isHovered}
+        >
+          <PostLabel>REVIEW</PostLabel> 
+          {title}
+        </PostTitleContainer>
+        <PostDetailsContainer>
+          <PostDetail style={{ borderLeft: 'none' }}>
+            <DetailTitle>Date</DetailTitle>
+            <DetailContent>
+              {postCreationDate}
+            </DetailContent>
+          </PostDetail>
+          <PostDetail>
+            <DetailTitle>Type</DetailTitle>
+            <DetailContent>
+              {teaType}
+            </DetailContent>
+          </PostDetail>
+          <PostDetail>
+            <DetailTitle>Rating</DetailTitle>
+            <DetailContent>
+              <StarRating style={{ fontSize: 12 }} color={theme.textColor} rating={teaRating} />
+            </DetailContent>
+          </PostDetail>
+        </PostDetailsContainer>
+      </PostContainer>
+    </div>
   )
 }

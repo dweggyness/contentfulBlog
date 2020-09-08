@@ -58,7 +58,7 @@ const PostGridContainer = styled.main`
   grid-template: repeat(4, minmax(250px, 350px)) / repeat(1, minmax(300px, 1fr));
   grid-gap: 3em;
   width: 70%;
-  overflow: hidden;
+  height: 1200px;
 
   margin: 60px 20px;
 

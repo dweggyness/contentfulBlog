@@ -51,7 +51,7 @@ export default function TeaBlogList({ pageContext, data }) {
             title={post.node.title}
             thumbnail={post.node.thumbnail}
             slug={post.node.slug}
-            postCreationDate={post.node.updatedAt}
+            postCreationDate={post.node.createdAt}
 
             key={i}
           />
@@ -69,13 +69,13 @@ export default function TeaBlogList({ pageContext, data }) {
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
     allContentfulTeaBlogPost(
-        sort: { fields: [updatedAt], order: DESC }
+        sort: { fields: [createdAt], order: DESC }
         limit: $limit
         skip: $skip
     ) {
         edges {
           node {
-            updatedAt(formatString: "DD.MM.YY")
+            createdAt
             title
             slug
             thumbnail {

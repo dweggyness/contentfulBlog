@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { keyframes } from "styled-components";
 import { StarRating } from '.';
+import { formatDate } from '../utils/formatDate';
 
 import { IoMdBeaker } from 'react-icons/io';
 import { FaRegClock, FaWeightHanging, FaThermometerHalf } from 'react-icons/fa';
@@ -103,7 +104,7 @@ export default function TeaReviewPostDetails({
                 </Detail>
                 <Detail>
                 <DetailTitle>Date</DetailTitle>
-                <DetailContent>{postCreationDate}</DetailContent>
+                <DetailContent>{formatDate(new Date(postCreationDate))}</DetailContent>
                 </Detail>
                 <Detail>
                 <DetailTitle>Type</DetailTitle>

@@ -90,7 +90,7 @@ export default function TeaReviewList({ location: { pathname, search }, pageCont
             slug={post.node.slug}
             teaType={post.node.teaType}
             teaRating={post.node.rating}
-            postCreationDate={post.node.updatedAt}
+            postCreationDate={post.node.createdAt}
 
             key={i}
           />
@@ -109,7 +109,7 @@ export default function TeaReviewList({ location: { pathname, search }, pageCont
 export const query = graphql`
   query($skip: Int!, $limit: Int!, $filter: [String!]) {
     descDate: allContentfulTeaReviewPost(
-        sort: { fields: [updatedAt], order: DESC }
+        sort: { fields: [createdAt], order: DESC }
         limit: $limit
         filter: { teaType: { in: $filter } }
         skip: $skip
@@ -121,7 +121,7 @@ export const query = graphql`
         }
     }
     ascDate: allContentfulTeaReviewPost(
-        sort: { fields: [updatedAt], order: ASC }
+        sort: { fields: [createdAt], order: ASC }
         limit: $limit
         filter: { teaType: { in: $filter } }
         skip: $skip

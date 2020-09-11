@@ -78,7 +78,7 @@ export default function ReviewPost({ data }) {
           teaType={post.teaType}
           teaPrice={post.price}
           teaRating={post.rating}
-          postCreationDate={post.updatedAt}
+          postCreationDate={post.createdAt}
           brewingWaterAmount={post.brewingWaterAmount}
           brewingTemp={post.brewingTemp}
           brewingTeaAmount={post.brewingTeaAmount}
@@ -137,7 +137,7 @@ const options = {
 export const query = graphql`
   query($slug: String!, $prevSlug: String, $nextSlug: String) {
     contentfulTeaReviewPost(slug: { eq: $slug }) {
-        updatedAt(formatString: "DD.MM.YY")
+        createdAt
         teaName
         teaSource
         rating

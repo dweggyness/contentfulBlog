@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react"
 import styled, { ThemeContext } from "styled-components"
 import Img from "gatsby-image"
 import { StarRating } from '.';
-import { Link } from "gatsby" // highlight-line
+import { Link } from "gatsby"
 import { hexToRGBA } from '../utils/hexToRGBA';
+import { formatDate } from '../utils/formatDate';
 
 const PostContainer = styled.article`
   display: grid;
@@ -112,7 +113,7 @@ export default function TeaReviewPost({ thumbnail, title, slug, teaType, teaRati
           <PostDetail style={{ borderLeft: 'none' }}>
             <DetailTitle>Date</DetailTitle>
             <DetailContent>
-              {postCreationDate}
+              {formatDate(new Date(postCreationDate))}
             </DetailContent>
           </PostDetail>
           <PostDetail>

@@ -109,7 +109,7 @@ export default function Home({ data }) {
                 slug={post.node.slug}
                 teaType={post.node.teaType}
                 teaRating={post.node.rating}
-                postCreationDate={post.node.updatedAt}
+                postCreationDate={post.node.createdAt}
   
                 key={i}
               />
@@ -117,7 +117,7 @@ export default function Home({ data }) {
               title={post.node.title}
               thumbnail={post.node.thumbnail}
               slug={post.node.slug}
-              postCreationDate={post.node.updatedAt}
+              postCreationDate={post.node.createdAt}
 
               key={i}
             />

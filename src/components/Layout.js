@@ -117,7 +117,6 @@ export default function Layout({ children }) {
 
 export const query = graphql`
     fragment PostData on ContentfulTeaReviewPost {
-        updatedAt(formatString: "DD.MM.YY")
         createdAt
         teaName
         teaSource
@@ -131,7 +130,6 @@ export const query = graphql`
         }
     }
     fragment BlogPreview on ContentfulTeaBlogPost {
-        updatedAt(formatString: "DD.MM.YY")
         createdAt
         title
         slug

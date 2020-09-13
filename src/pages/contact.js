@@ -155,7 +155,7 @@ export default function Home({ location }) {
           <Title>contact</Title>
           <Description>Feel free to drop me a message! Recommend me a tea, ask for opinions, or anything at all!</Description>
 
-          <Form name="contact" method="POST" data-netlify="true" action="#success">
+          <Form name="contact" method="POST" data-netlify="true" action="contact/#success">
               <input type="hidden" name="form-name" value="contact" />
               <InputLabel>
                   <Input placeholder="Name" type="text" name="name" required/>

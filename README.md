@@ -4,7 +4,7 @@ A blog for my tea appraisals as I've gotten addicted to tea. Made using Gatsby f
 
 ## Live site 
 
-https://www.dwegstea.me/
+https://dwegstea.netlify.app/
 
 Site design as of 9 September 2020
 ![Site design](https://i.imgur.com/VITBZ2k.jpg)
